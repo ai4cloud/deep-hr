@@ -2,7 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="DEEP-HR 智能招聘助手 - 专为金融科技外包行业打造的AI驱动招聘解决方案">
     <title>DEEP-HR 智能招聘助手 - 宣传彩页</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +21,10 @@
             --gradient-primary: linear-gradient(135deg, #0066FF 0%, #00D4AA 100%);
             --gradient-hero: linear-gradient(135deg, #0A1628 0%, #132039 50%, #1E3A5F 100%);
             --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            
+            /* Responsive spacing */
+            --section-padding-x: clamp(20px, 5vw, 50px);
+            --section-padding-y: clamp(40px, 8vw, 60px);
         }
 
         * {
@@ -28,12 +33,18 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--light);
             color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .page {
@@ -44,13 +55,13 @@
             box-shadow: 0 0 60px rgba(0,0,0,0.1);
         }
 
-        /* Hero Section */
+        /* ==================== Hero Section ==================== */
         .hero {
             background: var(--gradient-hero);
-            padding: 60px 50px;
+            padding: var(--section-padding-y) var(--section-padding-x);
             position: relative;
             overflow: hidden;
-            min-height: 500px;
+            min-height: 480px;
         }
 
         .hero::before {
@@ -62,6 +73,7 @@
             height: 800px;
             background: radial-gradient(circle, rgba(0,102,255,0.3) 0%, transparent 70%);
             animation: pulse 8s ease-in-out infinite;
+            pointer-events: none;
         }
 
         .hero::after {
@@ -73,6 +85,7 @@
             height: 600px;
             background: radial-gradient(circle, rgba(0,212,170,0.2) 0%, transparent 70%);
             animation: pulse 10s ease-in-out infinite reverse;
+            pointer-events: none;
         }
 
         @keyframes pulse {
@@ -96,28 +109,30 @@
         .brand {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
         }
 
         .brand-logo {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: var(--gradient-primary);
-            border-radius: 16px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Outfit', sans-serif;
             font-weight: 800;
-            font-size: 24px;
+            font-size: 20px;
             color: white;
             box-shadow: 0 10px 30px rgba(0,102,255,0.4);
+            flex-shrink: 0;
         }
 
         .brand-name {
             font-family: 'Outfit', sans-serif;
-            font-size: 32px;
+            font-size: clamp(24px, 5vw, 32px);
             font-weight: 700;
             letter-spacing: -1px;
         }
@@ -127,10 +142,10 @@
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: clamp(28px, 6vw, 46px);
             font-weight: 900;
             line-height: 1.2;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             background: linear-gradient(135deg, #ffffff 0%, #a8d8ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -138,39 +153,41 @@
         }
 
         .hero-subtitle {
-            font-size: 20px;
+            font-size: clamp(14px, 3vw, 20px);
             opacity: 0.9;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             font-weight: 300;
+            line-height: 1.6;
         }
 
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 12px;
         }
 
         .stat-item {
             background: var(--gradient-card);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 16px;
-            padding: 20px;
+            border-radius: 12px;
+            padding: 16px 12px;
             text-align: center;
         }
 
         .stat-number {
             font-family: 'Outfit', sans-serif;
-            font-size: 36px;
+            font-size: clamp(24px, 5vw, 36px);
             font-weight: 800;
             color: var(--secondary);
             display: block;
+            line-height: 1.2;
         }
 
         .stat-label {
-            font-size: 14px;
+            font-size: clamp(11px, 2vw, 14px);
             opacity: 0.8;
-            margin-top: 5px;
+            margin-top: 4px;
         }
 
         .hero-visual {
@@ -179,8 +196,8 @@
 
         .hero-card {
             background: white;
-            border-radius: 24px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 24px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.3);
             transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
             transition: transform 0.5s ease;
@@ -196,11 +213,11 @@
             gap: 8px;
             background: var(--gradient-primary);
             color: white;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 30px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .ai-badge::before {
@@ -216,81 +233,87 @@
         .feature-preview {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .preview-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
+            gap: 10px;
+            padding: 10px 14px;
             background: var(--light);
-            border-radius: 12px;
-            font-size: 14px;
+            border-radius: 10px;
+            font-size: 13px;
             color: var(--dark);
         }
 
         .preview-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 14px;
+            flex-shrink: 0;
         }
 
         .preview-icon.blue { background: #E3F2FD; }
         .preview-icon.green { background: #E8F5E9; }
         .preview-icon.orange { background: #FFF3E0; }
         .preview-icon.purple { background: #F3E5F5; }
+        .preview-icon.cyan { background: #E0F7FA; }
 
-        /* Pain Points Section */
-        .pain-section {
-            padding: 60px 50px;
-            background: linear-gradient(180deg, #FEF3F2 0%, #FFF 100%);
-        }
-
+        /* ==================== Section Common Styles ==================== */
         .section-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: clamp(30px, 6vw, 50px);
+            padding: 0 10px;
         }
 
         .section-tag {
             display: inline-block;
-            padding: 8px 20px;
+            padding: 6px 16px;
             background: rgba(255,107,53,0.1);
             color: var(--accent);
             border-radius: 30px;
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
             font-weight: 500;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .section-title {
-            font-size: 36px;
+            font-size: clamp(24px, 5vw, 36px);
             font-weight: 700;
             color: var(--dark);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            line-height: 1.3;
         }
 
         .section-desc {
-            font-size: 18px;
+            font-size: clamp(14px, 3vw, 18px);
             color: var(--gray);
             max-width: 600px;
             margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ==================== Pain Points Section ==================== */
+        .pain-section {
+            padding: var(--section-padding-y) var(--section-padding-x);
+            background: linear-gradient(180deg, #FEF3F2 0%, #FFF 100%);
         }
 
         .pain-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
+            gap: 20px;
         }
 
         .pain-card {
             background: white;
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 16px;
+            padding: clamp(20px, 4vw, 30px);
             border: 1px solid #FEE2E2;
             position: relative;
             overflow: hidden;
@@ -302,46 +325,71 @@
             box-shadow: 0 20px 40px rgba(255,107,53,0.1);
         }
 
+        .pain-card.highlight {
+            border: 2px solid var(--accent);
+            background: linear-gradient(145deg, #FFF 0%, #FFF8F6 100%);
+        }
+
+        .pain-card.highlight::after {
+            content: '⭐ 核心痛点';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
         .pain-icon {
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 20px;
+            margin-bottom: 16px;
         }
 
         .pain-title {
-            font-size: 18px;
+            font-size: clamp(15px, 3vw, 18px);
             font-weight: 600;
             color: var(--dark);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            padding-right: 60px;
+        }
+
+        .pain-card.highlight .pain-title {
+            padding-right: 80px;
         }
 
         .pain-desc {
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
             color: var(--gray);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .pain-stat {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 12px;
+            gap: 6px;
+            padding: 5px 10px;
             background: #FEF2F2;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: clamp(11px, 2vw, 13px);
             color: #DC2626;
             font-weight: 500;
+            flex-wrap: wrap;
         }
 
-        /* Solution Section */
+        /* ==================== Solution Section ==================== */
         .solution-section {
-            padding: 60px 50px;
+            padding: var(--section-padding-y) var(--section-padding-x);
             background: var(--dark);
             position: relative;
             overflow: hidden;
@@ -373,14 +421,14 @@
         .solution-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
+            gap: 20px;
         }
 
         .solution-card {
             background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 16px;
+            padding: clamp(20px, 4vw, 30px);
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -408,59 +456,261 @@
             opacity: 1;
         }
 
+        .solution-card.featured {
+            grid-column: span 2;
+            background: linear-gradient(145deg, rgba(255,152,0,0.15) 0%, rgba(255,255,255,0.05) 100%);
+            border: 2px solid rgba(255,152,0,0.3);
+        }
+
+        .solution-card.featured .solution-icon {
+            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+            box-shadow: 0 10px 30px rgba(255,152,0,0.4);
+        }
+
+        .solution-card.featured .solution-feature {
+            background: rgba(255,152,0,0.2);
+            color: #FFB74D;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
         .solution-number {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 16px;
+            right: 16px;
             font-family: 'Outfit', sans-serif;
-            font-size: 48px;
+            font-size: clamp(32px, 6vw, 48px);
             font-weight: 800;
             color: rgba(255,255,255,0.05);
         }
 
+        .solution-card.featured .solution-number {
+            display: none;
+        }
+
         .solution-icon {
-            width: 56px;
-            height: 56px;
+            width: 48px;
+            height: 48px;
             background: var(--gradient-primary);
-            border-radius: 14px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 24px;
+            margin-bottom: 16px;
             box-shadow: 0 10px 30px rgba(0,102,255,0.3);
         }
 
         .solution-title {
-            font-size: 20px;
+            font-size: clamp(16px, 3vw, 20px);
             font-weight: 600;
             color: white;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            padding-right: 50px;
+        }
+
+        .solution-card.featured .solution-title {
+            padding-right: 90px;
         }
 
         .solution-desc {
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
             color: rgba(255,255,255,0.7);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+            line-height: 1.6;
         }
 
         .solution-features {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
 
         .solution-feature {
-            padding: 6px 12px;
+            padding: 5px 10px;
             background: rgba(0,212,170,0.15);
             border-radius: 20px;
-            font-size: 12px;
+            font-size: clamp(10px, 2vw, 12px);
             color: var(--secondary);
+            white-space: nowrap;
         }
 
-        /* Value Section */
+        /* ==================== Scenario Section ==================== */
+        .scenario-section {
+            padding: var(--section-padding-y) var(--section-padding-x);
+            background: linear-gradient(180deg, #F0F9FF 0%, #FFF 100%);
+        }
+
+        .scenario-section .section-tag {
+            background: rgba(0,102,255,0.1);
+            color: var(--primary);
+        }
+
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .scenario-card {
+            background: white;
+            border-radius: 20px;
+            padding: clamp(24px, 4vw, 35px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            border: 1px solid #E2E8F0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scenario-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .scenario-card.daily::before {
+            background: linear-gradient(90deg, #0066FF, #00D4AA);
+        }
+
+        .scenario-card.bidding::before {
+            background: linear-gradient(90deg, #FF9800, #FF5722);
+        }
+
+        .scenario-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .scenario-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .scenario-card.daily .scenario-icon {
+            background: #E3F2FD;
+        }
+
+        .scenario-card.bidding .scenario-icon {
+            background: #FFF3E0;
+        }
+
+        .scenario-title {
+            font-size: clamp(16px, 3.5vw, 22px);
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .scenario-subtitle {
+            font-size: clamp(12px, 2.5vw, 14px);
+            color: var(--gray);
+        }
+
+        .scenario-compare {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .compare-box {
+            padding: clamp(14px, 3vw, 20px);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .compare-box.before {
+            background: #FEF2F2;
+        }
+
+        .compare-box.after {
+            background: #ECFDF5;
+        }
+
+        .compare-label {
+            font-size: clamp(10px, 2vw, 12px);
+            color: var(--gray);
+            margin-bottom: 6px;
+        }
+
+        .compare-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(22px, 4vw, 28px);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .compare-box.before .compare-value {
+            color: #DC2626;
+        }
+
+        .compare-box.after .compare-value {
+            color: #059669;
+        }
+
+        .compare-unit {
+            font-size: clamp(10px, 2vw, 13px);
+            color: var(--gray);
+            margin-top: 4px;
+        }
+
+        .compare-arrow {
+            font-size: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scenario-result {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: clamp(12px, 2.5vw, 15px);
+            background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+            border-radius: 10px;
+            font-weight: 600;
+            color: #059669;
+            font-size: clamp(12px, 2.5vw, 14px);
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .scenario-result .highlight {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(16px, 3vw, 20px);
+            font-weight: 800;
+            color: #047857;
+        }
+
+        /* ==================== Value Section ==================== */
         .value-section {
-            padding: 60px 50px;
+            padding: var(--section-padding-y) var(--section-padding-x);
             background: white;
         }
 
@@ -472,15 +722,15 @@
         .value-comparison {
             display: grid;
             grid-template-columns: 1fr auto 1fr;
-            gap: 30px;
+            gap: 24px;
             align-items: stretch;
             margin-top: 40px;
         }
 
         .value-column {
             background: var(--light);
-            border-radius: 24px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: clamp(20px, 4vw, 30px);
         }
 
         .value-column.before {
@@ -494,28 +744,28 @@
 
         .value-column-header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .value-column-title {
-            font-size: 20px;
+            font-size: clamp(16px, 3vw, 20px);
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .before .value-column-title { color: #DC2626; }
         .after .value-column-title { color: #059669; }
 
         .value-column-subtitle {
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
             color: var(--gray);
         }
 
         .value-item {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            padding: 15px 0;
+            gap: 10px;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
@@ -524,13 +774,14 @@
         }
 
         .value-icon-wrapper {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            font-size: 12px;
         }
 
         .before .value-icon-wrapper {
@@ -545,128 +796,42 @@
 
         .value-text {
             flex: 1;
+            min-width: 0;
         }
 
         .value-label {
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
             font-weight: 500;
             color: var(--dark);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .value-detail {
-            font-size: 13px;
+            font-size: clamp(11px, 2vw, 13px);
             color: var(--gray);
+            word-wrap: break-word;
         }
 
         .value-arrow {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
+            font-size: 32px;
             color: var(--primary);
-            padding: 0 10px;
+            padding: 0 8px;
         }
 
-        /* ROI Section */
-        .roi-section {
-            padding: 60px 50px;
-            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .roi-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -30%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-        }
-
-        .roi-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .roi-section .section-tag {
-            background: rgba(255,255,255,0.2);
-            color: white;
-        }
-
-        .roi-section .section-title {
-            color: white;
-        }
-
-        .roi-section .section-desc {
-            color: rgba(255,255,255,0.8);
-        }
-
-        .roi-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .roi-card {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 20px;
-            padding: 30px 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .roi-card:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-5px);
-        }
-
-        .roi-value {
-            font-family: 'Outfit', sans-serif;
-            font-size: 42px;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 5px;
-        }
-
-        .roi-value span {
-            font-size: 24px;
-        }
-
-        .roi-label {
-            font-size: 14px;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 10px;
-        }
-
-        .roi-change {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 5px 12px;
-            background: rgba(0,212,170,0.3);
-            border-radius: 20px;
-            font-size: 13px;
-            color: #7FFFD4;
-            font-weight: 500;
-        }
-
-        /* CTA Section */
+        /* ==================== CTA Section ==================== */
         .cta-section {
-            padding: 60px 50px;
+            padding: var(--section-padding-y) var(--section-padding-x);
             background: var(--light);
             text-align: center;
         }
 
         .cta-box {
             background: white;
-            border-radius: 30px;
-            padding: 50px;
+            border-radius: clamp(20px, 4vw, 30px);
+            padding: clamp(30px, 5vw, 50px);
             box-shadow: 0 20px 60px rgba(0,0,0,0.08);
             position: relative;
             overflow: hidden;
@@ -678,46 +843,51 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 200px;
+            width: 150px;
             height: 4px;
             background: var(--gradient-primary);
             border-radius: 0 0 4px 4px;
         }
 
         .cta-title {
-            font-size: 32px;
+            font-size: clamp(22px, 5vw, 32px);
             font-weight: 700;
             color: var(--dark);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .cta-desc {
-            font-size: 18px;
+            font-size: clamp(14px, 3vw, 18px);
             color: var(--gray);
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
         }
 
         .cta-buttons {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
         }
 
         .cta-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-size: 16px;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: clamp(14px, 3vw, 16px);
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
+            border: none;
+            min-width: 160px;
         }
 
         .cta-btn.primary {
@@ -745,71 +915,253 @@
         .cta-contact {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            padding-top: 30px;
+            gap: clamp(20px, 4vw, 40px);
+            padding-top: 24px;
             border-top: 1px solid #E2E8F0;
+            flex-wrap: wrap;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 15px;
+            gap: 8px;
+            font-size: clamp(12px, 2.5vw, 15px);
             color: var(--gray);
         }
 
         .contact-icon {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background: var(--light);
-            border-radius: 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 16px;
+            flex-shrink: 0;
         }
 
-        /* Footer */
+        /* ==================== Footer ==================== */
         .footer {
             background: var(--dark);
-            padding: 30px 50px;
+            padding: 24px var(--section-padding-x);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
         .footer-brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             color: white;
         }
 
         .footer-logo {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background: var(--gradient-primary);
-            border-radius: 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Outfit', sans-serif;
             font-weight: 800;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .footer-name {
             font-family: 'Outfit', sans-serif;
-            font-size: 20px;
+            font-size: clamp(16px, 3vw, 20px);
             font-weight: 600;
         }
 
         .footer-copy {
-            font-size: 14px;
+            font-size: clamp(11px, 2vw, 14px);
             color: rgba(255,255,255,0.5);
+            text-align: right;
         }
 
-        /* Print Styles */
+        /* ==================== Tablet Responsive (768px - 1024px) ==================== */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-visual {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .hero-card {
+                transform: none;
+            }
+
+            .solution-card.featured {
+                grid-column: span 2;
+            }
+        }
+
+        /* ==================== Mobile Responsive (< 768px) ==================== */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding-bottom: 50px;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .stat-item {
+                padding: 12px 8px;
+            }
+
+            .pain-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pain-card.highlight::after {
+                font-size: 9px;
+                padding: 3px 6px;
+                top: 10px;
+                right: 10px;
+            }
+
+            .pain-title {
+                padding-right: 70px;
+            }
+
+            .pain-card.highlight .pain-title {
+                padding-right: 80px;
+            }
+
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-card.featured {
+                grid-column: span 1;
+            }
+
+            .featured-badge {
+                top: 12px;
+                right: 12px;
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+
+            .solution-title {
+                padding-right: 0;
+            }
+
+            .solution-card.featured .solution-title {
+                padding-right: 80px;
+            }
+
+            .scenario-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scenario-compare {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .compare-arrow {
+                transform: rotate(90deg);
+                padding: 4px 0;
+            }
+
+            .value-comparison {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .value-arrow {
+                transform: rotate(90deg);
+                padding: 8px 0;
+                font-size: 28px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .cta-contact {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-copy {
+                text-align: center;
+            }
+        }
+
+        /* ==================== Small Mobile (< 400px) ==================== */
+        @media (max-width: 400px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .stat-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 14px 16px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+
+            .stat-label {
+                margin-top: 0;
+            }
+
+            .brand {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                text-align: center;
+            }
+
+            .solution-features {
+                justify-content: center;
+            }
+
+            .pain-stat {
+                font-size: 10px;
+            }
+        }
+
+        /* ==================== Print Styles ==================== */
         @media print {
             body {
                 -webkit-print-color-adjust: exact;
@@ -822,292 +1174,96 @@
             }
 
             .hero::before,
-            .hero::after,
-            .roi-section::before {
+            .hero::after {
                 display: none;
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .page {
-                max-width: 100%;
-            }
-
-            .hero,
-            .pain-section,
-            .solution-section,
-            .value-section,
-            .roi-section,
-            .cta-section {
-                padding: 40px 30px;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero-subtitle {
-                font-size: 18px;
-            }
-
-            .section-title {
-                font-size: 28px;
-            }
-
-            .section-desc {
-                font-size: 16px;
-            }
-
-            .roi-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero,
-            .pain-section,
-            .solution-section,
-            .value-section,
-            .roi-section,
-            .cta-section {
-                padding: 30px 20px;
-            }
-
-            .hero {
-                min-height: auto;
-                padding: 40px 20px;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
             }
 
             .hero-visual {
-                display: none;
-            }
-
-            .brand-name {
-                font-size: 24px;
-            }
-
-            .brand-logo {
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
-            }
-
-            .hero h1 {
-                font-size: 28px;
-                margin-bottom: 15px;
-            }
-
-            .hero-subtitle {
-                font-size: 16px;
-                margin-bottom: 25px;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .stat-item {
-                padding: 15px;
-            }
-
-            .stat-number {
-                font-size: 28px;
-            }
-
-            .section-title {
-                font-size: 24px;
-            }
-
-            .section-desc {
-                font-size: 15px;
+                display: block !important;
             }
 
             .pain-grid,
-            .solution-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .solution-grid,
+            .scenario-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .pain-card,
-            .solution-card {
-                padding: 25px;
+            .solution-card.featured {
+                grid-column: span 2;
             }
 
             .value-comparison {
-                grid-template-columns: 1fr;
-                gap: 20px;
+                grid-template-columns: 1fr auto 1fr;
             }
 
-            .value-column {
-                padding: 25px;
-            }
-
-            .value-arrow {
-                transform: rotate(90deg);
-                padding: 10px 0;
-                font-size: 30px;
-            }
-
-            .roi-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .roi-card {
-                padding: 25px 20px;
-            }
-
-            .roi-value {
-                font-size: 36px;
-            }
-
-            .cta-box {
-                padding: 30px 20px;
-            }
-
-            .cta-title {
-                font-size: 24px;
-            }
-
-            .cta-desc {
-                font-size: 16px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .cta-btn {
-                width: 100%;
-                justify-content: center;
-                padding: 14px 24px;
-            }
-
-            .cta-contact {
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
-            }
-
-            .contact-item {
-                font-size: 14px;
-            }
-
-            .footer {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-                padding: 25px 20px;
-            }
-
-            .footer-copy {
-                font-size: 12px;
+            .cta-btn:hover {
+                transform: none;
             }
         }
 
-        @media (max-width: 480px) {
-            .hero,
-            .pain-section,
-            .solution-section,
-            .value-section,
-            .roi-section,
-            .cta-section {
-                padding: 25px 15px;
+        /* ==================== Landscape Mobile ==================== */
+        @media (max-width: 900px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
             }
 
-            .hero h1 {
-                font-size: 24px;
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
             }
 
-            .hero-subtitle {
-                font-size: 14px;
+            .pain-grid,
+            .solution-grid,
+            .scenario-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .brand-name {
-                font-size: 20px;
+            .solution-card.featured {
+                grid-column: span 2;
             }
+        }
 
-            .brand-logo {
-                width: 40px;
-                height: 40px;
-                font-size: 18px;
-                border-radius: 12px;
-            }
-
-            .section-title {
-                font-size: 20px;
-            }
-
-            .section-desc {
-                font-size: 14px;
-            }
-
-            .pain-card,
-            .solution-card,
-            .value-column {
-                padding: 20px;
-            }
-
+        /* ==================== High DPI / Retina ==================== */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .brand-logo,
+            .solution-icon,
             .pain-icon,
-            .solution-icon {
-                width: 44px;
-                height: 44px;
-                font-size: 22px;
-                margin-bottom: 15px;
+            .scenario-icon {
+                image-rendering: -webkit-optimize-contrast;
+            }
+        }
+
+        /* ==================== Reduced Motion ==================== */
+        @media (prefers-reduced-motion: reduce) {
+            .hero::before,
+            .hero::after {
+                animation: none;
             }
 
-            .pain-title,
-            .solution-title {
-                font-size: 16px;
+            .ai-badge::before {
+                animation: none;
             }
 
-            .pain-desc,
-            .solution-desc {
-                font-size: 13px;
+            .hero-card {
+                transform: none;
             }
 
-            .roi-value {
-                font-size: 32px;
+            .hero-card:hover {
+                transform: none;
             }
 
-            .roi-value span {
-                font-size: 20px;
+            .pain-card:hover,
+            .solution-card:hover {
+                transform: none;
             }
 
-            .cta-title {
-                font-size: 20px;
+            .cta-btn:hover {
+                transform: none;
             }
+        }
 
-            .cta-desc {
-                font-size: 14px;
-            }
-
-            .cta-btn {
-                font-size: 14px;
-                padding: 12px 20px;
-            }
-
-            .contact-item {
-                font-size: 13px;
-            }
-
-            .contact-icon {
-                width: 36px;
-                height: 36px;
-                font-size: 16px;
-            }
-
-            .footer-name {
-                font-size: 18px;
-            }
+        /* ==================== Dark Mode Support ==================== */
+        @media (prefers-color-scheme: dark) {
+            /* Optional: Add dark mode styles if needed */
         }
     </style>
 </head>
@@ -1125,7 +1281,7 @@
                     <p class="hero-subtitle">专为金融科技外包行业打造，让简历处理效率提升 5 倍，投递成功率翻倍</p>
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <span class="stat-number">96%</span>
+                            <span class="stat-number">80%</span>
                             <span class="stat-label">效率提升</span>
                         </div>
                         <div class="stat-item">
@@ -1133,8 +1289,8 @@
                             <span class="stat-label">匹配准确率</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">2x</span>
-                            <span class="stat-label">成功率翻倍</span>
+                            <span class="stat-number">90%</span>
+                            <span class="stat-label">简历生成提速</span>
                         </div>
                     </div>
                 </div>
@@ -1144,19 +1300,23 @@
                         <div class="feature-preview">
                             <div class="preview-item">
                                 <div class="preview-icon blue">📄</div>
-                                <span>智能简历解析 - 5分钟完成</span>
+                                <span>智能简历解析 - 3分钟完成</span>
+                            </div>
+                            <div class="preview-item">
+                                <div class="preview-icon orange">📋</div>
+                                <span>模板批量生成 - 节省90%时间</span>
                             </div>
                             <div class="preview-item">
                                 <div class="preview-icon green">🎯</div>
                                 <span>人岗智能匹配 - 准确率85%+</span>
                             </div>
                             <div class="preview-item">
-                                <div class="preview-icon orange">✨</div>
+                                <div class="preview-icon purple">✨</div>
                                 <span>简历质量优化 - 提升35%</span>
                             </div>
                             <div class="preview-item">
-                                <div class="preview-icon purple">📋</div>
-                                <span>模板批量生成 - 节省90%时间</span>
+                                <div class="preview-icon cyan">📝</div>
+                                <span>候选人自助填报 - 体验升级</span>
                             </div>
                         </div>
                     </div>
@@ -1172,29 +1332,29 @@
                 <p class="section-desc">金融外包行业招聘流程复杂，传统方式效率低、质量难保证</p>
             </div>
             <div class="pain-grid">
+                <div class="pain-card highlight">
+                    <div class="pain-icon">📋</div>
+                    <h3 class="pain-title">简历模板管理与批量生成效率低</h3>
+                    <p class="pain-desc">不同客户要求不同模板，手工调整格式耗时。日常推荐 30 分钟/份，投标准备更是噩梦：150 份简历需要 37.5 小时连续加班</p>
+                    <span class="pain-stat">📊 日常 30分钟/份 · 投标 37.5小时/批</span>
+                </div>
                 <div class="pain-card">
                     <div class="pain-icon">⏰</div>
-                    <h3 class="pain-title">处理周期长</h3>
-                    <p class="pain-desc">从简历收集到客户投递需要3-5天，严重影响招聘效率和客户满意度</p>
-                    <span class="pain-stat">📊 平均处理周期 3-5 天/人</span>
+                    <h3 class="pain-title">简历处理效率低</h3>
+                    <p class="pain-desc">人工录入一份简历需要 15-20 分钟，从简历收集到客户投递需要 3-5 天</p>
+                    <span class="pain-stat">📊 人工录入 15-20分钟/份</span>
                 </div>
                 <div class="pain-card">
                     <div class="pain-icon">📉</div>
-                    <h3 class="pain-title">投递成功率低</h3>
-                    <p class="pain-desc">简历质量参差不齐，缺乏针对性优化，大量候选人被客户直接筛掉</p>
-                    <span class="pain-stat">📊 投递成功率仅 30-40%</span>
+                    <h3 class="pain-title">候选人匹配不精准</h3>
+                    <p class="pain-desc">依赖经验匹配，准确率约 60%，容易遗漏优质候选人或错误推荐</p>
+                    <span class="pain-stat">📊 匹配准确率仅 60%</span>
                 </div>
                 <div class="pain-card">
-                    <div class="pain-icon">🔄</div>
-                    <h3 class="pain-title">重复工作多</h3>
-                    <p class="pain-desc">信息核实、简历重填、格式检查等重复性工作占用HR大量时间精力</p>
-                    <span class="pain-stat">📊 重复性工作占比 70%</span>
-                </div>
-                <div class="pain-card">
-                    <div class="pain-icon">💬</div>
-                    <h3 class="pain-title">沟通效率低</h3>
-                    <p class="pain-desc">通过微信收集信息需要3-5轮沟通，信息分散难追溯，候选人体验差</p>
-                    <span class="pain-stat">📊 平均沟通 3-5 轮/人</span>
+                    <div class="pain-icon">📊</div>
+                    <h3 class="pain-title">简历质量参差不齐</h3>
+                    <p class="pain-desc">简历格式不统一，内容质量差，缺乏量化数据，影响推荐效果和客户满意度</p>
+                    <span class="pain-stat">📊 质量问题占比 60-70%</span>
                 </div>
             </div>
         </section>
@@ -1203,15 +1363,30 @@
         <section class="solution-section">
             <div class="section-header">
                 <span class="section-tag">💡 解决方案</span>
-                <h2 class="section-title">四大核心能力，全面提升招聘效率</h2>
+                <h2 class="section-title">五大核心能力，全面提升招聘效率</h2>
                 <p class="section-desc">DEEP-HR 通过 AI 技术重构招聘流程，实现智能化、自动化、标准化</p>
             </div>
             <div class="solution-grid">
+                <!-- Featured: 简历模板批量生成 -->
+                <div class="solution-card featured">
+                    <div class="featured-badge">⭐ 核心亮点</div>
+                    <div class="solution-icon">📋</div>
+                    <h3 class="solution-title">简历模板管理与批量生成</h3>
+                    <p class="solution-desc">AI 辅助解析客户模板结构，自动建立字段映射，一键批量生成 50-300 份简历。日常推荐从 30 分钟降到 3 分钟，投标准备从通宵加班变成 1 天轻松搞定</p>
+                    <div class="solution-features">
+                        <span class="solution-feature">多客户多模板</span>
+                        <span class="solution-feature">AI模板解析</span>
+                        <span class="solution-feature">批量生成</span>
+                        <span class="solution-feature">智能数据检查</span>
+                        <span class="solution-feature">节省90%时间</span>
+                    </div>
+                </div>
+
                 <div class="solution-card">
                     <span class="solution-number">01</span>
                     <div class="solution-icon">🤖</div>
                     <h3 class="solution-title">AI 智能简历解析</h3>
-                    <p class="solution-desc">支持 Word、PDF、图片等多格式简历，AI 自动提取关键信息，准确率达 85%+，从小时级降到分钟级</p>
+                    <p class="solution-desc">支持 Word、PDF、图片等多格式简历，AI 自动提取关键信息，3 分钟完成，效率提升 80%</p>
                     <div class="solution-features">
                         <span class="solution-feature">多格式支持</span>
                         <span class="solution-feature">结构化存储</span>
@@ -1222,7 +1397,7 @@
                     <span class="solution-number">02</span>
                     <div class="solution-icon">🎯</div>
                     <h3 class="solution-title">人岗智能匹配</h3>
-                    <p class="solution-desc">规则引擎 + AI 语义理解的混合匹配算法，多维度评分，生成可解释性匹配报告</p>
+                    <p class="solution-desc">5 维度量化评分（技能、经验、项目、教育、证书），AI 深度理解岗位需求，准确率 85%+</p>
                     <div class="solution-features">
                         <span class="solution-feature">多维度评分</span>
                         <span class="solution-feature">智能推荐</span>
@@ -1233,7 +1408,7 @@
                     <span class="solution-number">03</span>
                     <div class="solution-icon">📝</div>
                     <h3 class="solution-title">候选人自助填报</h3>
-                    <p class="solution-desc">在线结构化表单替代微信沟通，实时验证、智能引导、断点续填，信息完整度达 95%+</p>
+                    <p class="solution-desc">现代化 Web 界面，分步引导填写，实时验证，替代微信沟通，信息完整度达 95%+</p>
                     <div class="solution-features">
                         <span class="solution-feature">在线表单</span>
                         <span class="solution-feature">实时验证</span>
@@ -1244,11 +1419,73 @@
                     <span class="solution-number">04</span>
                     <div class="solution-icon">✨</div>
                     <h3 class="solution-title">AI 简历优化</h3>
-                    <p class="solution-desc">多维度质量评估，智能优化建议生成，支持通用优化和岗位定向优化，简历质量提升 35%</p>
+                    <p class="solution-desc">多维度质量评分，智能优化建议，支持通用优化和岗位定向优化，简历质量提升 35%</p>
                     <div class="solution-features">
                         <span class="solution-feature">质量评估</span>
                         <span class="solution-feature">智能建议</span>
                         <span class="solution-feature">版本管理</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario Section -->
+        <section class="scenario-section">
+            <div class="section-header">
+                <span class="section-tag">🎬 典型场景</span>
+                <h2 class="section-title">两大核心场景，效率提升立竿见影</h2>
+                <p class="section-desc">无论是日常推荐还是投标准备，DEEP-HR 都能帮您大幅提升效率</p>
+            </div>
+            <div class="scenario-grid">
+                <div class="scenario-card daily">
+                    <div class="scenario-header">
+                        <div class="scenario-icon">📤</div>
+                        <div>
+                            <h3 class="scenario-title">场景一：日常推荐</h3>
+                            <p class="scenario-subtitle">同一候选人推荐给多个客户</p>
+                        </div>
+                    </div>
+                    <div class="scenario-compare">
+                        <div class="compare-box before">
+                            <div class="compare-label">传统方式</div>
+                            <div class="compare-value">30</div>
+                            <div class="compare-unit">分钟/份</div>
+                        </div>
+                        <div class="compare-arrow">→</div>
+                        <div class="compare-box after">
+                            <div class="compare-label">DEEP-HR</div>
+                            <div class="compare-value">3</div>
+                            <div class="compare-unit">分钟/份</div>
+                        </div>
+                    </div>
+                    <div class="scenario-result">
+                        🚀 效率提升 <span class="highlight">90%</span>，告别重复劳动
+                    </div>
+                </div>
+
+                <div class="scenario-card bidding">
+                    <div class="scenario-header">
+                        <div class="scenario-icon">📑</div>
+                        <div>
+                            <h3 class="scenario-title">场景二：投标准备</h3>
+                            <p class="scenario-subtitle">大规模简历准备（150份）</p>
+                        </div>
+                    </div>
+                    <div class="scenario-compare">
+                        <div class="compare-box before">
+                            <div class="compare-label">传统方式</div>
+                            <div class="compare-value">37.5</div>
+                            <div class="compare-unit">小时（通宵加班）</div>
+                        </div>
+                        <div class="compare-arrow">→</div>
+                        <div class="compare-box after">
+                            <div class="compare-label">DEEP-HR</div>
+                            <div class="compare-value">7.5</div>
+                            <div class="compare-unit">小时（1天完成）</div>
+                        </div>
+                    </div>
+                    <div class="scenario-result">
+                        🎉 效率提升 <span class="highlight">80%</span>，告别通宵加班
                     </div>
                 </div>
             </div>
@@ -1270,36 +1507,36 @@
                     <div class="value-item">
                         <div class="value-icon-wrapper">✗</div>
                         <div class="value-text">
-                            <div class="value-label">处理周期</div>
-                            <div class="value-detail">3-5 天/人</div>
+                            <div class="value-label">简历录入</div>
+                            <div class="value-detail">人工录入 15-20 分钟/份</div>
                         </div>
                     </div>
                     <div class="value-item">
                         <div class="value-icon-wrapper">✗</div>
                         <div class="value-text">
-                            <div class="value-label">投递成功率</div>
-                            <div class="value-detail">30-40%</div>
+                            <div class="value-label">简历生成（日常）</div>
+                            <div class="value-detail">手工调整格式 30 分钟/份</div>
                         </div>
                     </div>
                     <div class="value-item">
                         <div class="value-icon-wrapper">✗</div>
                         <div class="value-text">
-                            <div class="value-label">简历解析</div>
-                            <div class="value-detail">人工录入 2-3小时/份</div>
+                            <div class="value-label">简历生成（投标）</div>
+                            <div class="value-detail">150 份需 37.5 小时</div>
                         </div>
                     </div>
                     <div class="value-item">
                         <div class="value-icon-wrapper">✗</div>
                         <div class="value-text">
                             <div class="value-label">人岗匹配</div>
-                            <div class="value-detail">准确率 60-70%</div>
+                            <div class="value-detail">依赖经验，准确率 60%</div>
                         </div>
                     </div>
                     <div class="value-item">
                         <div class="value-icon-wrapper">✗</div>
                         <div class="value-text">
-                            <div class="value-label">信息收集</div>
-                            <div class="value-detail">微信沟通 3-5轮</div>
+                            <div class="value-label">候选人体验</div>
+                            <div class="value-detail">被动等待，满意度 65%</div>
                         </div>
                     </div>
                 </div>
@@ -1314,70 +1551,37 @@
                     <div class="value-item">
                         <div class="value-icon-wrapper">✓</div>
                         <div class="value-text">
-                            <div class="value-label">处理周期</div>
-                            <div class="value-detail">1-2 天/人 ↓60%</div>
+                            <div class="value-label">简历录入</div>
+                            <div class="value-detail">AI 解析 3 分钟/份 ↑80%</div>
                         </div>
                     </div>
                     <div class="value-item">
                         <div class="value-icon-wrapper">✓</div>
                         <div class="value-text">
-                            <div class="value-label">投递成功率</div>
-                            <div class="value-detail">70-80% ↑100%</div>
+                            <div class="value-label">简历生成（日常）</div>
+                            <div class="value-detail">一键生成 3 分钟/份 ↑90%</div>
                         </div>
                     </div>
                     <div class="value-item">
                         <div class="value-icon-wrapper">✓</div>
                         <div class="value-text">
-                            <div class="value-label">简历解析</div>
-                            <div class="value-detail">AI解析 5-10分钟/份 ↑96%</div>
+                            <div class="value-label">简历生成（投标）</div>
+                            <div class="value-detail">150 份仅需 7.5 小时 ↑80%</div>
                         </div>
                     </div>
                     <div class="value-item">
                         <div class="value-icon-wrapper">✓</div>
                         <div class="value-text">
                             <div class="value-label">人岗匹配</div>
-                            <div class="value-detail">准确率 85%+ ↑25%</div>
+                            <div class="value-detail">AI 智能匹配 85%+ ↑25%</div>
                         </div>
                     </div>
                     <div class="value-item">
                         <div class="value-icon-wrapper">✓</div>
                         <div class="value-text">
-                            <div class="value-label">信息收集</div>
-                            <div class="value-detail">在线表单 1次完成 ↑80%</div>
+                            <div class="value-label">候选人体验</div>
+                            <div class="value-detail">自助填写 满意度 85%+ ↑30%</div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ROI Section -->
-        <section class="roi-section">
-            <div class="roi-content">
-                <div class="section-header">
-                    <span class="section-tag">💰 投资回报</span>
-                    <h2 class="section-title">清晰的商业价值</h2>
-                    <p class="section-desc">投入 40 万，2.5 个月回本，3 年累计净收益超 500 万</p>
-                </div>
-                <div class="roi-grid">
-                    <div class="roi-card">
-                        <div class="roi-value">376<span>%</span></div>
-                        <div class="roi-label">首年投资回报率</div>
-                        <div class="roi-change">↑ 净收益 150.5万</div>
-                    </div>
-                    <div class="roi-card">
-                        <div class="roi-value">2.5<span>月</span></div>
-                        <div class="roi-label">投资回收周期</div>
-                        <div class="roi-change">↑ 快速见效</div>
-                    </div>
-                    <div class="roi-card">
-                        <div class="roi-value">190<span>万</span></div>
-                        <div class="roi-label">年度收益</div>
-                        <div class="roi-change">↑ 效率+质量+成本</div>
-                    </div>
-                    <div class="roi-card">
-                        <div class="roi-value">500<span>万+</span></div>
-                        <div class="roi-label">3年累计净收益</div>
-                        <div class="roi-change">↑ 持续增值</div>
                     </div>
                 </div>
             </div>
@@ -1387,7 +1591,7 @@
         <section class="cta-section">
             <div class="cta-box">
                 <h2 class="cta-title">开启智能招聘新时代</h2>
-                <p class="cta-desc">让 AI 为您的招聘团队赋能，提升效率、优化质量、降低成本</p>
+                <p class="cta-desc">让 AI 为您的招聘团队赋能，告别通宵加班，提升效率、优化质量</p>
                 <div class="cta-buttons">
                     <a href="#" class="cta-btn primary">
                         <span>🚀</span>
@@ -1409,7 +1613,7 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">🌐</div>
-                        <span>www.deep-hr.com</span>
+                        <span>deep-hr.ai4cloud.chat</span>
                     </div>
                 </div>
             </div>
@@ -1422,7 +1626,7 @@
                 <span class="footer-name">DEEP-HR</span>
             </div>
             <div class="footer-copy">
-                © 2025 DEEP-HR 智能招聘助手 · 金融解决方案部 · 版权所有
+                © 2025 DEEP-HR 智能招聘助手 · 金融解决方案部
             </div>
         </footer>
     </div>
