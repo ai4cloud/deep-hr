@@ -1,1634 +1,2255 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="DEEP-HR 智能招聘助手 - 专为金融科技外包行业打造的AI驱动招聘解决方案">
-    <title>DEEP-HR 智能招聘助手 - 宣传彩页</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0066FF;
-            --primary-dark: #0052CC;
-            --secondary: #00D4AA;
-            --accent: #FF6B35;
-            --dark: #0A1628;
-            --dark-blue: #132039;
-            --light: #F8FAFC;
-            --gray: #64748B;
-            --gradient-primary: linear-gradient(135deg, #0066FF 0%, #00D4AA 100%);
-            --gradient-hero: linear-gradient(135deg, #0A1628 0%, #132039 50%, #1E3A5F 100%);
-            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-            
-            /* Responsive spacing */
-            --section-padding-x: clamp(20px, 5vw, 50px);
-            --section-padding-y: clamp(40px, 8vw, 60px);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .page {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 60px rgba(0,0,0,0.1);
-        }
-
-        /* ==================== Hero Section ==================== */
-        .hero {
-            background: var(--gradient-hero);
-            padding: var(--section-padding-y) var(--section-padding-x);
-            position: relative;
-            overflow: hidden;
-            min-height: 480px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(0,102,255,0.3) 0%, transparent 70%);
-            animation: pulse 8s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0,212,170,0.2) 0%, transparent 70%);
-            animation: pulse 10s ease-in-out infinite reverse;
-            pointer-events: none;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .hero-text {
-            color: white;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
-
-        .brand-logo {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: 20px;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0,102,255,0.4);
-            flex-shrink: 0;
-        }
-
-        .brand-name {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(24px, 5vw, 32px);
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        .brand-name span {
-            color: var(--secondary);
-        }
-
-        .hero h1 {
-            font-size: clamp(28px, 6vw, 46px);
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, #ffffff 0%, #a8d8ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(14px, 3vw, 20px);
-            opacity: 0.9;
-            margin-bottom: 24px;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .stat-item {
-            background: var(--gradient-card);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 12px;
-            padding: 16px 12px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(24px, 5vw, 36px);
-            font-weight: 800;
-            color: var(--secondary);
-            display: block;
-            line-height: 1.2;
-        }
-
-        .stat-label {
-            font-size: clamp(11px, 2vw, 14px);
-            opacity: 0.8;
-            margin-top: 4px;
-        }
-
-        .hero-visual {
-            position: relative;
-        }
-
-        .hero-card {
-            background: white;
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
-            transition: transform 0.5s ease;
-        }
-
-        .hero-card:hover {
-            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
-        }
-
-        .ai-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--gradient-primary);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 500;
-            margin-bottom: 16px;
-        }
-
-        .ai-badge::before {
-            content: '✦';
-            animation: sparkle 1.5s ease-in-out infinite;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
-
-        .feature-preview {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .preview-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            background: var(--light);
-            border-radius: 10px;
-            font-size: 13px;
-            color: var(--dark);
-        }
-
-        .preview-icon {
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-
-        .preview-icon.blue { background: #E3F2FD; }
-        .preview-icon.green { background: #E8F5E9; }
-        .preview-icon.orange { background: #FFF3E0; }
-        .preview-icon.purple { background: #F3E5F5; }
-        .preview-icon.cyan { background: #E0F7FA; }
-
-        /* ==================== Section Common Styles ==================== */
-        .section-header {
-            text-align: center;
-            margin-bottom: clamp(30px, 6vw, 50px);
-            padding: 0 10px;
-        }
-
-        .section-tag {
-            display: inline-block;
-            padding: 6px 16px;
-            background: rgba(255,107,53,0.1);
-            color: var(--accent);
-            border-radius: 30px;
-            font-size: clamp(12px, 2.5vw, 14px);
-            font-weight: 500;
-            margin-bottom: 12px;
-        }
-
-        .section-title {
-            font-size: clamp(24px, 5vw, 36px);
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .section-desc {
-            font-size: clamp(14px, 3vw, 18px);
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* ==================== Pain Points Section ==================== */
-        .pain-section {
-            padding: var(--section-padding-y) var(--section-padding-x);
-            background: linear-gradient(180deg, #FEF3F2 0%, #FFF 100%);
-        }
-
-        .pain-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .pain-card {
-            background: white;
-            border-radius: 16px;
-            padding: clamp(20px, 4vw, 30px);
-            border: 1px solid #FEE2E2;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .pain-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(255,107,53,0.1);
-        }
-
-        .pain-card.highlight {
-            border: 2px solid var(--accent);
-            background: linear-gradient(145deg, #FFF 0%, #FFF8F6 100%);
-        }
-
-        .pain-card.highlight::after {
-            content: '⭐ 核心痛点';
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            font-size: 10px;
-            background: var(--accent);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 20px;
-            font-weight: 500;
-        }
-
-        .pain-icon {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-bottom: 16px;
-        }
-
-        .pain-title {
-            font-size: clamp(15px, 3vw, 18px);
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 8px;
-            padding-right: 60px;
-        }
-
-        .pain-card.highlight .pain-title {
-            padding-right: 80px;
-        }
-
-        .pain-desc {
-            font-size: clamp(12px, 2.5vw, 14px);
-            color: var(--gray);
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
-
-        .pain-stat {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 10px;
-            background: #FEF2F2;
-            border-radius: 20px;
-            font-size: clamp(11px, 2vw, 13px);
-            color: #DC2626;
-            font-weight: 500;
-            flex-wrap: wrap;
-        }
-
-        /* ==================== Solution Section ==================== */
-        .solution-section {
-            padding: var(--section-padding-y) var(--section-padding-x);
-            background: var(--dark);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .solution-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-        }
-
-        .solution-section .section-tag {
-            background: rgba(0,212,170,0.2);
-            color: var(--secondary);
-        }
-
-        .solution-section .section-title {
-            color: white;
-        }
-
-        .solution-section .section-desc {
-            color: rgba(255,255,255,0.7);
-        }
-
-        .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .solution-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: clamp(20px, 4vw, 30px);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .solution-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0,102,255,0.2);
-        }
-
-        .solution-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gradient-primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .solution-card:hover::before {
-            opacity: 1;
-        }
-
-        .solution-card.featured {
-            grid-column: span 2;
-            background: linear-gradient(145deg, rgba(255,152,0,0.15) 0%, rgba(255,255,255,0.05) 100%);
-            border: 2px solid rgba(255,152,0,0.3);
-        }
-
-        .solution-card.featured .solution-icon {
-            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
-            box-shadow: 0 10px 30px rgba(255,152,0,0.4);
-        }
-
-        .solution-card.featured .solution-feature {
-            background: rgba(255,152,0,0.2);
-            color: #FFB74D;
-        }
-
-        .featured-badge {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .solution-number {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(32px, 6vw, 48px);
-            font-weight: 800;
-            color: rgba(255,255,255,0.05);
-        }
-
-        .solution-card.featured .solution-number {
-            display: none;
-        }
-
-        .solution-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 16px;
-            box-shadow: 0 10px 30px rgba(0,102,255,0.3);
-        }
-
-        .solution-title {
-            font-size: clamp(16px, 3vw, 20px);
-            font-weight: 600;
-            color: white;
-            margin-bottom: 10px;
-            padding-right: 50px;
-        }
-
-        .solution-card.featured .solution-title {
-            padding-right: 90px;
-        }
-
-        .solution-desc {
-            font-size: clamp(12px, 2.5vw, 14px);
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 16px;
-            line-height: 1.6;
-        }
-
-        .solution-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .solution-feature {
-            padding: 5px 10px;
-            background: rgba(0,212,170,0.15);
-            border-radius: 20px;
-            font-size: clamp(10px, 2vw, 12px);
-            color: var(--secondary);
-            white-space: nowrap;
-        }
-
-        /* ==================== Scenario Section ==================== */
-        .scenario-section {
-            padding: var(--section-padding-y) var(--section-padding-x);
-            background: linear-gradient(180deg, #F0F9FF 0%, #FFF 100%);
-        }
-
-        .scenario-section .section-tag {
-            background: rgba(0,102,255,0.1);
-            color: var(--primary);
-        }
-
-        .scenario-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .scenario-card {
-            background: white;
-            border-radius: 20px;
-            padding: clamp(24px, 4vw, 35px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-            border: 1px solid #E2E8F0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .scenario-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-        }
-
-        .scenario-card.daily::before {
-            background: linear-gradient(90deg, #0066FF, #00D4AA);
-        }
-
-        .scenario-card.bidding::before {
-            background: linear-gradient(90deg, #FF9800, #FF5722);
-        }
-
-        .scenario-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .scenario-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .scenario-card.daily .scenario-icon {
-            background: #E3F2FD;
-        }
-
-        .scenario-card.bidding .scenario-icon {
-            background: #FFF3E0;
-        }
-
-        .scenario-title {
-            font-size: clamp(16px, 3.5vw, 22px);
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        .scenario-subtitle {
-            font-size: clamp(12px, 2.5vw, 14px);
-            color: var(--gray);
-        }
-
-        .scenario-compare {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .compare-box {
-            padding: clamp(14px, 3vw, 20px);
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .compare-box.before {
-            background: #FEF2F2;
-        }
-
-        .compare-box.after {
-            background: #ECFDF5;
-        }
-
-        .compare-label {
-            font-size: clamp(10px, 2vw, 12px);
-            color: var(--gray);
-            margin-bottom: 6px;
-        }
-
-        .compare-value {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(22px, 4vw, 28px);
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .compare-box.before .compare-value {
-            color: #DC2626;
-        }
-
-        .compare-box.after .compare-value {
-            color: #059669;
-        }
-
-        .compare-unit {
-            font-size: clamp(10px, 2vw, 13px);
-            color: var(--gray);
-            margin-top: 4px;
-        }
-
-        .compare-arrow {
-            font-size: 20px;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .scenario-result {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: clamp(12px, 2.5vw, 15px);
-            background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
-            border-radius: 10px;
-            font-weight: 600;
-            color: #059669;
-            font-size: clamp(12px, 2.5vw, 14px);
-            flex-wrap: wrap;
-            text-align: center;
-        }
-
-        .scenario-result .highlight {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(16px, 3vw, 20px);
-            font-weight: 800;
-            color: #047857;
-        }
-
-        /* ==================== Value Section ==================== */
-        .value-section {
-            padding: var(--section-padding-y) var(--section-padding-x);
-            background: white;
-        }
-
-        .value-section .section-tag {
-            background: rgba(0,102,255,0.1);
-            color: var(--primary);
-        }
-
-        .value-comparison {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 24px;
-            align-items: stretch;
-            margin-top: 40px;
-        }
-
-        .value-column {
-            background: var(--light);
-            border-radius: 20px;
-            padding: clamp(20px, 4vw, 30px);
-        }
-
-        .value-column.before {
-            background: linear-gradient(145deg, #FEF2F2 0%, #FFF 100%);
-        }
-
-        .value-column.after {
-            background: linear-gradient(145deg, #ECFDF5 0%, #FFF 100%);
-            border: 2px solid var(--secondary);
-        }
-
-        .value-column-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .value-column-title {
-            font-size: clamp(16px, 3vw, 20px);
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .before .value-column-title { color: #DC2626; }
-        .after .value-column-title { color: #059669; }
-
-        .value-column-subtitle {
-            font-size: clamp(12px, 2.5vw, 14px);
-            color: var(--gray);
-        }
-
-        .value-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .value-item:last-child {
-            border-bottom: none;
-        }
-
-        .value-icon-wrapper {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 12px;
-        }
-
-        .before .value-icon-wrapper {
-            background: #FEE2E2;
-            color: #DC2626;
-        }
-
-        .after .value-icon-wrapper {
-            background: #D1FAE5;
-            color: #059669;
-        }
-
-        .value-text {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .value-label {
-            font-size: clamp(12px, 2.5vw, 14px);
-            font-weight: 500;
-            color: var(--dark);
-            margin-bottom: 2px;
-        }
-
-        .value-detail {
-            font-size: clamp(11px, 2vw, 13px);
-            color: var(--gray);
-            word-wrap: break-word;
-        }
-
-        .value-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            color: var(--primary);
-            padding: 0 8px;
-        }
-
-        /* ==================== CTA Section ==================== */
-        .cta-section {
-            padding: var(--section-padding-y) var(--section-padding-x);
-            background: var(--light);
-            text-align: center;
-        }
-
-        .cta-box {
-            background: white;
-            border-radius: clamp(20px, 4vw, 30px);
-            padding: clamp(30px, 5vw, 50px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 4px;
-            background: var(--gradient-primary);
-            border-radius: 0 0 4px 4px;
-        }
-
-        .cta-title {
-            font-size: clamp(22px, 5vw, 32px);
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 12px;
-        }
-
-        .cta-desc {
-            font-size: clamp(14px, 3vw, 18px);
-            color: var(--gray);
-            margin-bottom: 24px;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
-
-        .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 28px;
-            border-radius: 10px;
-            font-size: clamp(14px, 3vw, 16px);
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            min-width: 160px;
-        }
-
-        .cta-btn.primary {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: 0 10px 30px rgba(0,102,255,0.3);
-        }
-
-        .cta-btn.primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,102,255,0.4);
-        }
-
-        .cta-btn.secondary {
-            background: white;
-            color: var(--dark);
-            border: 2px solid var(--dark);
-        }
-
-        .cta-btn.secondary:hover {
-            background: var(--dark);
-            color: white;
-        }
-
-        .cta-contact {
-            display: flex;
-            justify-content: center;
-            gap: clamp(20px, 4vw, 40px);
-            padding-top: 24px;
-            border-top: 1px solid #E2E8F0;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: clamp(12px, 2.5vw, 15px);
-            color: var(--gray);
-        }
-
-        .contact-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--light);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-
-        /* ==================== Footer ==================== */
-        .footer {
-            background: var(--dark);
-            padding: 24px var(--section-padding-x);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-        }
-
-        .footer-logo {
-            width: 36px;
-            height: 36px;
-            background: var(--gradient-primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: 14px;
-        }
-
-        .footer-name {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(16px, 3vw, 20px);
-            font-weight: 600;
-        }
-
-        .footer-copy {
-            font-size: clamp(11px, 2vw, 14px);
-            color: rgba(255,255,255,0.5);
-            text-align: right;
-        }
-
-        /* ==================== Tablet Responsive (768px - 1024px) ==================== */
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .hero-visual {
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            .hero-card {
-                transform: none;
-            }
-
-            .solution-card.featured {
-                grid-column: span 2;
-            }
-        }
-
-        /* ==================== Mobile Responsive (< 768px) ==================== */
-        @media (max-width: 768px) {
-            .hero {
-                min-height: auto;
-                padding-bottom: 50px;
-            }
-
-            .hero-visual {
-                display: none;
-            }
-
-            .hero-stats {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-            }
-
-            .stat-item {
-                padding: 12px 8px;
-            }
-
-            .pain-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pain-card.highlight::after {
-                font-size: 9px;
-                padding: 3px 6px;
-                top: 10px;
-                right: 10px;
-            }
-
-            .pain-title {
-                padding-right: 70px;
-            }
-
-            .pain-card.highlight .pain-title {
-                padding-right: 80px;
-            }
-
-            .solution-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .solution-card.featured {
-                grid-column: span 1;
-            }
-
-            .featured-badge {
-                top: 12px;
-                right: 12px;
-                font-size: 10px;
-                padding: 4px 10px;
-            }
-
-            .solution-title {
-                padding-right: 0;
-            }
-
-            .solution-card.featured .solution-title {
-                padding-right: 80px;
-            }
-
-            .scenario-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .scenario-compare {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-
-            .compare-arrow {
-                transform: rotate(90deg);
-                padding: 4px 0;
-            }
-
-            .value-comparison {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-
-            .value-arrow {
-                transform: rotate(90deg);
-                padding: 8px 0;
-                font-size: 28px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .cta-btn {
-                width: 100%;
-                max-width: 280px;
-            }
-
-            .cta-contact {
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
-            }
-
-            .footer {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-copy {
-                text-align: center;
-            }
-        }
-
-        /* ==================== Small Mobile (< 400px) ==================== */
-        @media (max-width: 400px) {
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-
-            .stat-item {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 14px 16px;
-            }
-
-            .stat-number {
-                font-size: 28px;
-            }
-
-            .stat-label {
-                margin-top: 0;
-            }
-
-            .brand {
-                justify-content: center;
-            }
-
-            .hero h1 {
-                text-align: center;
-            }
-
-            .hero-subtitle {
-                text-align: center;
-            }
-
-            .solution-features {
-                justify-content: center;
-            }
-
-            .pain-stat {
-                font-size: 10px;
-            }
-        }
-
-        /* ==================== Print Styles ==================== */
-        @media print {
-            body {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            
-            .page {
-                box-shadow: none;
-                max-width: none;
-            }
-
-            .hero::before,
-            .hero::after {
-                display: none;
-            }
-
-            .hero-visual {
-                display: block !important;
-            }
-
-            .pain-grid,
-            .solution-grid,
-            .scenario-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .solution-card.featured {
-                grid-column: span 2;
-            }
-
-            .value-comparison {
-                grid-template-columns: 1fr auto 1fr;
-            }
-
-            .cta-btn:hover {
-                transform: none;
-            }
-        }
-
-        /* ==================== Landscape Mobile ==================== */
-        @media (max-width: 900px) and (orientation: landscape) {
-            .hero {
-                min-height: auto;
-            }
-
-            .hero-stats {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .pain-grid,
-            .solution-grid,
-            .scenario-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .solution-card.featured {
-                grid-column: span 2;
-            }
-        }
-
-        /* ==================== High DPI / Retina ==================== */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            .brand-logo,
-            .solution-icon,
-            .pain-icon,
-            .scenario-icon {
-                image-rendering: -webkit-optimize-contrast;
-            }
-        }
-
-        /* ==================== Reduced Motion ==================== */
-        @media (prefers-reduced-motion: reduce) {
-            .hero::before,
-            .hero::after {
-                animation: none;
-            }
-
-            .ai-badge::before {
-                animation: none;
-            }
-
-            .hero-card {
-                transform: none;
-            }
-
-            .hero-card:hover {
-                transform: none;
-            }
-
-            .pain-card:hover,
-            .solution-card:hover {
-                transform: none;
-            }
-
-            .cta-btn:hover {
-                transform: none;
-            }
-        }
-
-        /* ==================== Dark Mode Support ==================== */
-        @media (prefers-color-scheme: dark) {
-            /* Optional: Add dark mode styles if needed */
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEEP-HR · 让 HR 团队告别 Excel 和通宵加班的 AI 人才管理系统</title>
+  <meta name="description" content="DEEP-HR 专为 HR 外包企业、猎头公司及大型企业设计，AI 贯穿招聘七步全链路：智能采集与核实、智能画像与匹配、简历优化与生成、面试准备与辅导。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       CSS 变量 · 浅色主题
+    ============================================================ */
+    :root {
+      /* 品牌色 */
+      --primary:        #6366f1;
+      --primary-dark:   #4f46e5;
+      --primary-light:  #818cf8;
+      --primary-50:     #eef2ff;
+      --primary-100:    #e0e7ff;
+      --cyan:           #06b6d4;
+      --cyan-light:     #67e8f9;
+      --cyan-50:        #ecfeff;
+      --cyan-text:      #0e7490;
+
+      /* 背景 */
+      --bg-white:  #ffffff;
+      --bg-gray:   #f8fafc;
+      --bg-gray2:  #f1f5f9;
+
+      /* 文字 */
+      --text-primary:   #0f172a;
+      --text-secondary: #475569;
+      --text-muted:     #94a3b8;
+
+      /* 边框 */
+      --border:        #e2e8f0;
+      --border-accent: rgba(99,102,241,0.25);
+
+      /* 渐变 */
+      --gradient-brand:  linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+      --gradient-subtle: linear-gradient(135deg, #eef2ff 0%, #ecfeff 100%);
+
+      /* 阴影 */
+      --shadow-xs:    0 1px 2px rgba(0,0,0,0.05);
+      --shadow-sm:    0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md:    0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg:    0 8px 32px rgba(0,0,0,0.10);
+      --shadow-brand: 0 4px 16px rgba(99,102,241,0.28);
+
+      /* 圆角 */
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    /* ============================================================
+       Reset & Base
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'PingFang SC', 'Hiragino Sans GB',
+                   'Source Han Sans SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+      background: var(--bg-white);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ============================================================
+       通用工具
+    ============================================================ */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section     { padding: 96px 0; }
+    .section-sm  { padding: 64px 0; }
+    .section-white { background: var(--bg-white); }
+    .section-gray  { background: var(--bg-gray); }
+
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-header .badge { margin-bottom: 16px; }
+    .section-title {
+      font-size: clamp(30px, 4vw, 44px);
+      font-weight: 700; line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 18px; color: var(--text-secondary);
+      max-width: 600px; margin: 0 auto; line-height: 1.7;
+    }
+
+    /* Badge 芯片 */
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 14px; border-radius: 999px;
+      font-size: 13px; font-weight: 500;
+      background: var(--primary-50);
+      border: 1px solid var(--primary-100);
+      color: var(--primary);
+    }
+    .badge .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--cyan); flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    /* Feature Tag */
+    .feature-tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 10px; border-radius: 999px;
+      font-size: 12px; font-weight: 600;
+      background: var(--cyan-50);
+      border: 1px solid rgba(6,182,212,0.3);
+      color: var(--cyan-text);
+    }
+    .feature-tag-new {
+      background: #fffbeb !important;
+      border-color: rgba(217,119,6,0.3) !important;
+      color: #d97706 !important;
+    }
+
+    /* Fade-up 动画 */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(2) { transition-delay: 0.08s; }
+    .fade-up:nth-child(3) { transition-delay: 0.16s; }
+    .fade-up:nth-child(4) { transition-delay: 0.24s; }
+    .fade-up:nth-child(5) { transition-delay: 0.32s; }
+    .fade-up:nth-child(6) { transition-delay: 0.40s; }
+    .fade-up:nth-child(7) { transition-delay: 0.48s; }
+    .fade-up:nth-child(8) { transition-delay: 0.56s; }
+    .fade-up:nth-child(9) { transition-delay: 0.64s; }
+
+    /* ============================================================
+       导航栏
+    ============================================================ */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+      transition: box-shadow 0.3s;
+    }
+    .navbar.scrolled { box-shadow: 0 1px 8px rgba(0,0,0,0.07); }
+    .navbar .container {
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+
+    /* Logo */
+    .navbar-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 20px; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .logo-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--gradient-brand);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 900; color: #fff;
+    }
+    .logo-text { background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .logo-sub  { font-size: 11px; font-weight: 400; color: var(--text-muted); -webkit-text-fill-color: var(--text-muted); display: block; }
+
+    /* Nav links */
+    .navbar-nav { display: flex; align-items: center; gap: 4px; }
+    .navbar-nav a {
+      font-size: 14px; font-weight: 500; color: var(--text-secondary);
+      padding: 6px 12px; border-radius: var(--radius-sm);
+      transition: color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .navbar-nav a:hover { color: var(--text-primary); background: var(--bg-gray); }
+    .navbar-nav a.active {
+      color: var(--primary);
+      background: var(--primary-50);
+    }
+
+    /* Actions */
+    .navbar-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .btn-ghost {
+      padding: 7px 16px; border-radius: var(--radius-sm);
+      font-size: 14px; font-weight: 500; color: var(--text-secondary);
+      border: 1px solid var(--border); background: transparent; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover { color: var(--text-primary); border-color: var(--border-accent); background: var(--primary-50); }
+    .btn-primary {
+      padding: 8px 18px; border-radius: var(--radius-sm);
+      font-size: 14px; font-weight: 600; color: #fff;
+      background: var(--gradient-brand); border: none; cursor: pointer;
+      box-shadow: var(--shadow-brand);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* 汉堡 */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: all 0.3s; }
+
+    /* ============================================================
+       Hero
+    ============================================================ */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding-top: 64px;
+      background: var(--bg-white);
+    }
+
+    /* 极浅背景装饰 */
+    .hero-bg-glow {
+      position: absolute; top: 0; left: 0; right: 0; height: 70%;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(99,102,241,0.06) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero .container { position: relative; z-index: 1; }
+    .hero-content { max-width: 1120px; margin: 0 auto; text-align: left; padding: 72px 0 80px; }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+
+    /* Eyebrow */
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-bottom: 12px;
+      padding: 6px 16px; border-radius: 999px;
+      font-size: 13px; font-weight: 500;
+      background: var(--primary-50); border: 1px solid var(--primary-100);
+      color: var(--primary);
+    }
+
+    /* 信任行 */
+    .hero-trust {
+      font-size: 13px; color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .hero-trust strong { color: var(--primary); font-weight: 600; }
+
+    /* 主标题 */
+    .hero-title {
+      font-size: clamp(30px, 3.8vw, 52px);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -1.5px; color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+    .hero-title .gradient-text {
+      background: var(--gradient-brand);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      animation: shimmer 4s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 200% center; } }
+
+    /* 副标题 */
+    .hero-desc {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--text-secondary); line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* 能力胶囊 */
+    .hero-pills {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 10px; margin-bottom: 20px;
+    }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 16px; border-radius: 999px;
+      font-size: 14px; font-weight: 500;
+      background: var(--primary-50); border: 1px solid var(--border-accent);
+      color: var(--primary);
+    }
+
+    .hero-desc-bottom {
+      font-size: clamp(15px, 2vw, 17px);
+      color: var(--text-secondary); line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    /* CTA 按钮 */
+    .hero-cta {
+      display: flex; justify-content: flex-start; gap: 12px;
+      flex-wrap: wrap; margin-bottom: 16px;
+    }
+    .btn-hero-primary {
+      padding: 13px 30px; border-radius: var(--radius-sm);
+      font-size: 16px; font-weight: 600; color: #fff;
+      background: var(--gradient-brand); border: none; cursor: pointer;
+      box-shadow: var(--shadow-brand);
+      transition: all 0.25s;
+    }
+    .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(99,102,241,0.38); }
+    .btn-hero-secondary {
+      padding: 13px 30px; border-radius: var(--radius-sm);
+      font-size: 16px; font-weight: 600;
+      color: var(--text-primary); background: var(--bg-white);
+      border: 1px solid var(--border); cursor: pointer;
+      display: flex; align-items: center; gap: 8px;
+      transition: all 0.25s;
+    }
+    .btn-hero-secondary:hover { border-color: var(--border-accent); background: var(--primary-50); color: var(--primary); }
+    .play-icon {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--gradient-brand);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 8px; color: #fff;
+    }
+
+    /* 流程对比组件 */
+    .hero-comparison {
+      background: var(--bg-gray); border-radius: var(--radius-md);
+      border: 1px solid var(--border); padding: 8px 0;
+      margin-bottom: 40px; text-align: left;
+    }
+    .hc-row {
+      display: flex; align-items: center; gap: 0;
+      padding: 11px 20px; border-bottom: 1px solid var(--border);
+    }
+    .hc-row:last-child { border-bottom: none; }
+    .hc-label {
+      font-size: 12px; color: var(--text-muted); font-weight: 500;
+      width: 110px; flex-shrink: 0;
+    }
+    .hc-old {
+      flex: 1; font-size: 12px; color: var(--text-muted);
+      text-decoration: line-through; text-decoration-color: rgba(148,163,184,0.6);
+      white-space: nowrap;
+    }
+    .hc-arrow { font-size: 13px; color: var(--primary-light); margin: 0 10px; flex-shrink: 0; }
+    .hc-new {
+      width: 175px; flex-shrink: 0;
+      font-size: 12px; font-weight: 600; color: var(--primary);
+    }
+    .hc-new::before { content: '✓ '; }
+    @media (max-width: 680px) {
+      .hc-row { flex-wrap: wrap; gap: 4px; }
+      .hc-label { width: 100%; font-size: 11px; margin-bottom: 2px; }
+      .hc-old { flex: none; width: 100%; font-size: 12px; white-space: normal; }
+      .hc-arrow { margin: 2px 0; }
+      .hc-new { width: 100%; font-size: 12px; }
+    }
+
+    /* Hero CTA 辅助小字 */
+    .hero-cta-note {
+      font-size: 12px; color: var(--text-muted);
+      margin-top: 0; margin-bottom: 0;
+    }
+
+    /* 右侧对比卡片容器 */
+    .hero-right {
+      position: relative;
+    }
+    .hero-right .hero-comparison {
+      margin-bottom: 0;
+      box-shadow: 0 8px 32px rgba(99,102,241,0.08), 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .hero-right-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      color: var(--text-muted); text-transform: uppercase;
+      margin-bottom: 12px; padding-left: 4px;
+    }
+
+    /* 对比表格列标题行 */
+    .hc-header {
+      display: flex; align-items: center; gap: 0;
+      padding: 8px 20px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hc-header-label { width: 110px; flex-shrink: 0; }
+    .hc-header-old { flex: 1; font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.5px; }
+    .hc-header-arrow { width: 33px; flex-shrink: 0; }
+    .hc-header-new { width: 175px; flex-shrink: 0; font-size: 11px; font-weight: 700; color: var(--primary); letter-spacing: 0.5px; }
+
+    @media (max-width: 960px) {
+      .hero-content { text-align: center; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-cta { justify-content: center; }
+      .hero-eyebrow { justify-content: center; }
+    }
+
+    /* 数据栏 */
+    .hero-stats {
+      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+      padding-top: 40px; border-top: 1px solid var(--border);
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-num {
+      font-size: 30px; font-weight: 800;
+      background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-stat-label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ============================================================
+       AI 模型横幅
+    ============================================================ */
+    .tech-strip {
+      background: var(--bg-gray);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .tech-strip .container {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; flex-wrap: wrap;
+    }
+    .tech-label {
+      font-size: 12px; color: var(--text-muted); font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1px; margin-right: 8px;
+    }
+    .tech-badge {
+      padding: 5px 14px; border-radius: 999px;
+      font-size: 12px; font-weight: 500;
+      background: var(--bg-white); color: var(--text-secondary);
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .tech-badge:hover { border-color: var(--border-accent); background: var(--primary-50); color: var(--primary); }
+
+    /* ============================================================
+       产品预览区
+    ============================================================ */
+    .preview-section { background: var(--bg-white); }
+
+    /* Tab 切换 */
+    .preview-tabs {
+      display: flex; justify-content: center; gap: 4px;
+      flex-wrap: wrap; margin-bottom: 32px;
+    }
+    .ptab {
+      padding: 8px 20px; border-radius: var(--radius-sm);
+      font-size: 14px; font-weight: 500; cursor: pointer;
+      border: 1px solid var(--border); background: var(--bg-white);
+      color: var(--text-secondary); transition: all 0.2s;
+    }
+    .ptab:hover { color: var(--primary); border-color: var(--border-accent); background: var(--primary-50); }
+    .ptab.active {
+      background: var(--primary); color: #fff;
+      border-color: var(--primary); box-shadow: var(--shadow-brand);
+    }
+
+    /* Browser Frame */
+    .browser-frame {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    .browser-chrome {
+      height: 44px; background: var(--bg-gray2);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+    }
+    .browser-dots { display: flex; gap: 6px; }
+    .browser-dots span {
+      width: 12px; height: 12px; border-radius: 50%;
+    }
+    .dot-red    { background: #ff5f57; }
+    .dot-yellow { background: #febc2e; }
+    .dot-green  { background: #28c840; }
+    .browser-address {
+      flex: 1; max-width: 360px; margin: 0 auto;
+      height: 26px; background: var(--bg-white);
+      border: 1px solid var(--border); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; color: var(--text-muted);
+    }
+
+    /* Tab 面板 */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* 占位图区域 */
+    .preview-placeholder {
+      width: 100%; height: 460px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pip-content { text-align: center; }
+    .pip-icon    { font-size: 52px; margin-bottom: 16px; }
+    .pip-label   { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .pip-desc    { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.7; }
+    .pip-badge {
+      display: inline-block; padding: 5px 16px;
+      background: rgba(255,255,255,0.85);
+      border: 1px dashed var(--border-accent);
+      border-radius: 999px; font-size: 12px; color: var(--text-muted);
+    }
+
+    /* 轮播 */
+    .carousel { position: relative; }
+    .carousel-track { display: flex; transition: transform 0.38s cubic-bezier(.4,0,.2,1); }
+    .carousel-track img { width: 100%; flex-shrink: 0; display: block; }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.92); border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12); cursor: pointer;
+      font-size: 20px; line-height: 1; display: flex; align-items: center; justify-content: center;
+      color: var(--text-primary); transition: opacity .2s, box-shadow .2s; z-index: 10;
+      user-select: none;
+    }
+    .carousel-btn:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.18); }
+    .carousel-btn.carousel-prev { left: 12px; }
+    .carousel-btn.carousel-next { right: 12px; }
+    .carousel-btn:disabled { opacity: 0; pointer-events: none; }
+    .carousel-dots {
+      position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 6px; z-index: 10;
+    }
+    .cdot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(255,255,255,0.45); border: 1.5px solid rgba(255,255,255,0.8);
+      cursor: pointer; transition: background .2s, transform .2s;
+    }
+    .cdot.active { background: #fff; transform: scale(1.25); }
+
+    /* ============================================================
+       痛点区块
+    ============================================================ */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .pain-card {
+      padding: 28px; border-radius: var(--radius-md);
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .pain-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(239,68,68,0.5), transparent);
+    }
+    .pain-card:hover {
+      border-color: rgba(239,68,68,0.3);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+    .pain-icon  { font-size: 28px; margin-bottom: 12px; }
+    .pain-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary); }
+    .pain-desc  { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+
+    /* ============================================================
+       五环价值链
+    ============================================================ */
+    .value-chain {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+      position: relative;
+    }
+    /* 连接线 */
+    .value-chain::before {
+      content: '';
+      position: absolute; top: 36px; left: calc(100%/14); right: calc(100%/14);
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-100) 0%, var(--cyan-50) 100%);
+      z-index: 0; pointer-events: none;
+    }
+    .vc-arrow { display: none; }
+    .vc-item {
+      min-width: 0; overflow: hidden;
+      padding: 20px 14px; border-radius: var(--radius-md);
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .vc-item::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--gradient-brand); opacity: 0.35;
+      transition: opacity 0.3s;
+    }
+    .vc-item:hover { border-color: var(--border-accent); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .vc-item:hover::before { opacity: 1; }
+    .vc-item-highlight {
+      background: var(--primary-50);
+      border-color: var(--border-accent);
+    }
+    .vc-item-highlight::before { opacity: 1; }
+    .vc-icon     { font-size: 22px; margin-bottom: 4px; }
+    .vc-num      { font-size: 10px; font-weight: 700; color: var(--primary); letter-spacing: 2px; margin-bottom: 3px; }
+    .vc-title    { font-size: 13px; font-weight: 800; margin-bottom: 2px; color: var(--text-primary); }
+    .vc-subtitle { display: none; }
+    .vc-desc     { font-size: 11px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 10px; }
+    .vc-tags     { display: none; }
+    .vc-tag {
+      padding: 2px 8px; border-radius: 999px;
+      font-size: 11px; font-weight: 600;
+      background: var(--primary-50); border: 1px solid var(--primary-100); color: var(--primary);
+    }
+    .vc-item-highlight .vc-tag {
+      background: var(--cyan-50); border-color: rgba(6,182,212,0.25); color: var(--cyan-text);
+    }
+
+    /* ============================================================
+       四大核心能力模块
+    ============================================================ */
+
+    /* 能力分组标题 */
+    .pillar-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 28px; padding-left: 20px;
+      position: relative;
+    }
+    .pillar-header::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--gradient-brand); border-radius: 2px;
+    }
+    .pillar-num   { font-size: 11px; font-weight: 700; color: var(--primary); letter-spacing: 2px; text-transform: uppercase; }
+    .pillar-name  { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+    .pillar-sub   { font-size: 14px; color: var(--text-muted); margin-left: auto; }
+
+    .pillar-section { margin-bottom: 56px; }
+
+    /* 功能卡片 */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      padding: 28px; border-radius: var(--radius-md);
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gradient-brand);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .feature-card:hover {
+      border-color: var(--border-accent);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-card-highlight {
+      background: var(--primary-50);
+      border-color: var(--border-accent);
+    }
+    .feature-card-highlight::before { opacity: 0.5; }
+
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: var(--radius-sm);
+      background: var(--primary-50); border: 1px solid var(--primary-100);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 16px;
+      transition: background 0.3s;
+    }
+    .feature-card:hover .feature-icon { background: var(--primary-100); }
+    .feature-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+    .feature-desc  { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px; }
+
+    /* 宽卡 · 能力02核实体系 */
+    .feature-wide-card {
+      padding: 32px; border-radius: var(--radius-md);
+      background: var(--bg-white);
+      border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+    }
+    .fwc-head {
+      display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px;
+    }
+    .fwc-head-icon {
+      width: 52px; height: 52px; border-radius: var(--radius-sm); flex-shrink: 0;
+      background: var(--primary-50); border: 1px solid var(--primary-100);
+      display: flex; align-items: center; justify-content: center; font-size: 24px;
+    }
+    .fwc-head-title { font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .fwc-head-sub   { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+    .fwc-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      margin-bottom: 20px;
+    }
+    .fwc-item {
+      padding: 20px; border-radius: var(--radius-sm);
+      background: var(--bg-gray); border: 1px solid var(--border);
+    }
+    .fwc-item-icon  { font-size: 22px; margin-bottom: 8px; }
+    .fwc-item-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .fwc-item-desc  { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+    .fwc-foot       { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* Banner · 能力04辅导 */
+    .feature-banner {
+      display: flex; align-items: center; gap: 28px;
+      padding: 32px 36px; border-radius: var(--radius-md);
+      background: var(--primary-50);
+      border: 1px solid var(--border-accent);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+      position: relative;
+    }
+    .feature-banner:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .fb-badge {
+      position: absolute; top: -12px; left: 32px;
+      padding: 3px 14px; border-radius: 999px;
+      background: var(--gradient-brand); color: #fff;
+      font-size: 11px; font-weight: 700;
+    }
+    .fb-icon-wrap {
+      width: 64px; height: 64px; border-radius: var(--radius-md); flex-shrink: 0;
+      background: var(--gradient-brand);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px;
+    }
+    .fb-title { font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .fb-desc  { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px; }
+    .fb-tags  { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* ============================================================
+       效果数据
+    ============================================================ */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px; margin-bottom: 48px;
+    }
+    .stat-item    { text-align: center; }
+    .stat-number  {
+      font-size: clamp(44px, 5vw, 68px); font-weight: 800; line-height: 1;
+      background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-unit    { font-size: 26px; font-weight: 700; color: var(--primary-light); -webkit-text-fill-color: var(--primary-light); }
+    .stat-label   { font-size: 15px; color: var(--text-secondary); margin-top: 8px; font-weight: 500; }
+    .stat-desc    { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+    /* 效果对比表格 */
+    .compare-table-wrap {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-accent);
+      box-shadow: var(--shadow-sm); overflow: hidden;
+      margin-bottom: 48px;
+    }
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table thead tr { background: var(--bg-gray); }
+    .compare-table thead th {
+      padding: 12px 20px; font-size: 11px; font-weight: 700;
+      color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;
+      text-align: left; border-bottom: 1px solid var(--border);
+    }
+    .compare-table thead th.col-new {
+      background: var(--primary-50); color: var(--primary);
+    }
+    .compare-table tbody tr { border-bottom: 1px solid var(--border); }
+    .compare-table tbody tr:last-child { border-bottom: none; }
+    .compare-table tbody td { padding: 14px 20px; vertical-align: top; font-size: 14px; }
+    .compare-table tbody td.col-label { font-weight: 600; color: var(--text-primary); width: 160px; }
+    .compare-table tbody td.col-old { color: var(--text-muted); text-decoration: line-through; text-decoration-color: rgba(148,163,184,0.55); }
+    .compare-table tbody td.col-new {
+      background: var(--primary-50); color: var(--primary); font-weight: 600;
+    }
+    .compare-table tbody td.col-new::before { content: '✓ '; }
+    @media (max-width: 680px) {
+      .compare-table thead { display: none; }
+      .compare-table tbody tr { display: block; padding: 14px 16px; }
+      .compare-table tbody td { display: block; padding: 2px 0; width: 100% !important; }
+      .compare-table tbody td.col-label { font-size: 13px; margin-bottom: 4px; }
+      .compare-table tbody td.col-old { font-size: 12px; }
+      .compare-table tbody td.col-new { background: none; padding-left: 0; font-size: 13px; }
+    }
+
+    /* 安全认证带 */
+    .trust-strip {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 32px; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--text-muted);
+    }
+    .trust-item .ticon { font-size: 16px; }
+    .trust-item strong { font-weight: 600; color: var(--text-secondary); }
+
+    /* ============================================================
+       工作流程
+    ============================================================ */
+    .workflow-steps {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 0;
+      position: relative;
+    }
+    .workflow-steps::before {
+      content: '';
+      position: absolute; top: 40px; left: 5%; right: 5%; height: 2px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--cyan) 100%);
+      opacity: 0.3; z-index: 0;
+    }
+
+    /* 2列宽松网格（能力组02/03）*/
+    .features-grid-2 {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    }
+    .workflow-step { text-align: center; padding: 0 12px; position: relative; z-index: 1; }
+    .step-num {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--bg-white); border: 2px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; font-size: 28px;
+      position: relative; transition: all 0.3s;
+    }
+    .step-num::after {
+      content: attr(data-num);
+      position: absolute; top: -8px; right: -8px;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--gradient-brand);
+      font-size: 11px; font-weight: 700; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .workflow-step:hover .step-num { border-color: var(--border-accent); box-shadow: var(--shadow-brand); }
+    .step-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+    .step-desc  { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ============================================================
+       客户案例
+    ============================================================ */
+    .cases-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px;
+    }
+    .case-card {
+      padding: 32px; border-radius: var(--radius-md);
+      background: var(--bg-white); border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm); transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .case-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--gradient-brand); opacity: 0; transition: opacity 0.3s;
+    }
+    .case-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .case-card:hover::after { opacity: 1; }
+    .case-badge {
+      display: inline-block; padding: 4px 12px; border-radius: 999px;
+      font-size: 12px; font-weight: 600;
+      background: var(--primary-50); color: var(--primary);
+      border: 1px solid var(--primary-100); margin-bottom: 14px;
+    }
+    .case-title  { font-size: 19px; font-weight: 700; margin-bottom: 10px; color: var(--text-primary); }
+    .case-desc   { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; }
+    .case-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .case-metric-val {
+      font-size: 22px; font-weight: 800;
+      background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .case-metric-key { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .case-quote {
+      margin-top: 20px; padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-gray); border-left: 3px solid var(--primary);
+      font-size: 13px; color: var(--text-secondary); line-height: 1.7; font-style: italic;
+    }
+
+    /* ============================================================
+       定价
+    ============================================================ */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pricing-card {
+      padding: 32px; border-radius: var(--radius-md);
+      background: var(--bg-white); border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm); transition: all 0.3s;
+      position: relative;
+    }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+    /* 推荐套餐：深色渐变方案A */
+    .pricing-card.featured {
+      background: linear-gradient(145deg, #6366f1 0%, #0ea5e9 100%);
+      border: none;
+      box-shadow: 0 8px 32px rgba(99,102,241,0.35);
+      transform: scale(1.03);
+      color: #fff;
+    }
+    .pricing-card.featured:hover { transform: scale(1.03) translateY(-4px); }
+    .pricing-card.featured .pricing-name  { color: rgba(255,255,255,0.7); }
+    .pricing-card.featured .pricing-price-unit { color: rgba(255,255,255,0.7); }
+    .pricing-card.featured .pricing-desc  { color: rgba(255,255,255,0.65); }
+    .pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.85); }
+    .pricing-card.featured .check { color: #67e8f9; }
+    .pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.2); }
+
+    .popular-tag {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      padding: 4px 18px; border-radius: 999px;
+      background: #fff; color: var(--primary);
+      font-size: 12px; font-weight: 700; white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+    }
+    .pricing-name     { font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+    .pricing-price    { margin-bottom: 4px; }
+    .pricing-price-num { font-size: 44px; font-weight: 800; color: var(--text-primary); }
+    .pricing-card.featured .pricing-price-num { color: #fff; }
+    .pricing-price-unit { font-size: 15px; color: var(--text-secondary); }
+    .pricing-desc     { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+    .pricing-divider  { height: 1px; background: var(--border); margin: 20px 0; }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .pricing-features li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text-secondary); }
+    .pricing-features li .check { color: var(--cyan); flex-shrink: 0; margin-top: 1px; font-weight: 700; }
+    .btn-pricing {
+      width: 100%; padding: 12px; border-radius: var(--radius-sm);
+      font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-pricing-outline {
+      background: transparent; color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+    .btn-pricing-outline:hover { border-color: var(--border-accent); color: var(--primary); background: var(--primary-50); }
+    .btn-pricing-solid {
+      background: rgba(255,255,255,0.15); color: #fff;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .btn-pricing-solid:hover { background: rgba(255,255,255,0.25); }
+
+    /* ============================================================
+       FAQ 手风琴
+    ============================================================ */
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-question {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0; cursor: pointer; background: none; border: none;
+      text-align: left; font-size: 15px; font-weight: 600; color: var(--text-primary);
+      gap: 16px; transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--primary); }
+    .faq-item.open .faq-question { color: var(--primary); }
+    .faq-arrow {
+      font-size: 16px; color: var(--text-muted); flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); color: var(--primary); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+    .faq-answer-inner {
+      padding: 0 0 20px 0;
+      font-size: 14px; color: var(--text-secondary); line-height: 1.8;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; }
+
+    /* ============================================================
+       CTA
+    ============================================================ */
+    .cta-section {
+      background: var(--gradient-subtle);
+      border-top: 1px solid var(--border-accent);
+      border-bottom: 1px solid var(--border-accent);
+      position: relative;
+    }
+    .cta-content { text-align: center; }
+    .cta-title    { font-size: clamp(28px, 4vw, 48px); font-weight: 800; margin-bottom: 16px; letter-spacing: -1px; color: var(--text-primary); }
+    .cta-subtitle { font-size: 17px; color: var(--text-secondary); margin-bottom: 36px; line-height: 1.7; }
+    .cta-actions  { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn-cta {
+      padding: 14px 32px; border-radius: var(--radius-sm);
+      font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.25s;
+    }
+    .btn-cta-primary {
+      background: var(--gradient-brand); color: #fff; border: none;
+      box-shadow: var(--shadow-brand);
+    }
+    .btn-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(99,102,241,0.38); }
+    .btn-cta-secondary {
+      background: var(--bg-white); color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+    .btn-cta-secondary:hover { border-color: var(--border-accent); color: var(--primary); background: var(--primary-50); }
+    .cta-note { margin-top: 16px; font-size: 13px; color: var(--text-muted); }
+    .cta-contacts {
+      margin-top: 48px; display: flex; justify-content: center;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .cta-contact-item { text-align: center; }
+    .cta-contact-label { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+    .cta-contact-val   { font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+
+    /* ============================================================
+       Footer（保留深色）
+    ============================================================ */
+    footer {
+      background: #0f172a;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 64px 0 32px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+    .footer-logo-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .footer-logo-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--gradient-brand);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 900; color: #fff;
+    }
+    .footer-logo-name {
+      font-size: 18px; font-weight: 700;
+      background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 280px; margin-bottom: 20px; }
+    .footer-contact  { display: flex; flex-direction: column; gap: 8px; }
+    .footer-contact a {
+      font-size: 13px; color: rgba(255,255,255,0.5);
+      display: flex; align-items: center; gap: 8px;
+      transition: color 0.2s;
+    }
+    .footer-contact a:hover { color: var(--primary-light); }
+    .footer-col h4 {
+      font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5);
+      margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: 13px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: rgba(255,255,255,0.75); }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-bottom p, .footer-bottom .icp {
+      font-size: 12px; color: rgba(255,255,255,0.3);
+    }
+
+    /* ============================================================
+       响应式
+    ============================================================ */
+    @media (max-width: 1200px) {
+      .workflow-steps { grid-template-columns: repeat(4, 1fr); }
+      .workflow-steps::before { display: none; }
+    }
+    @media (max-width: 900px) {
+      .features-grid-2 { grid-template-columns: 1fr; gap: 20px; }
+      .navbar-nav { display: none; }
+      .navbar-nav.open {
+        display: flex; flex-direction: column; gap: 12px;
+        position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+        background: rgba(255,255,255,0.98); backdrop-filter: blur(16px);
+        padding: 32px 24px; z-index: 99; border-top: 1px solid var(--border);
+      }
+      .navbar-nav.open a { font-size: 18px; padding: 10px 0; }
+      .hamburger { display: flex; }
+      .navbar-actions .btn-ghost { display: none; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card.featured { transform: none; }
+      .pricing-card.featured:hover { transform: translateY(-4px); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .value-chain { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+      .value-chain::before { display: none; }
+      .fwc-grid { grid-template-columns: 1fr; }
+      .feature-banner { flex-direction: column; text-align: center; }
+      .pillar-sub { display: none; }
+    }
+    @media (max-width: 640px) {
+      .section { padding: 64px 0; }
+      .value-chain { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .workflow-steps { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .cta-contacts { gap: 24px; }
+      .trust-strip { gap: 20px; }
+      .preview-tabs { gap: 6px; }
+      .ptab { font-size: 13px; padding: 7px 14px; }
+    }
+
+    /* ============================================================
+       滚动条
+    ============================================================ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-gray); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+  </style>
 </head>
 <body>
-    <div class="page">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="brand">
-                        <div class="brand-logo">D</div>
-                        <div class="brand-name">DEEP-<span>HR</span></div>
-                    </div>
-                    <h1>AI 驱动的<br>智能招聘助手</h1>
-                    <p class="hero-subtitle">专为金融科技外包行业打造，让简历处理效率提升 5 倍，投递成功率翻倍</p>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">80%</span>
-                            <span class="stat-label">效率提升</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">85%+</span>
-                            <span class="stat-label">匹配准确率</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">90%</span>
-                            <span class="stat-label">简历生成提速</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-card">
-                        <div class="ai-badge">AI 智能分析中</div>
-                        <div class="feature-preview">
-                            <div class="preview-item">
-                                <div class="preview-icon blue">📄</div>
-                                <span>智能简历解析 - 3分钟完成</span>
-                            </div>
-                            <div class="preview-item">
-                                <div class="preview-icon orange">📋</div>
-                                <span>模板批量生成 - 节省90%时间</span>
-                            </div>
-                            <div class="preview-item">
-                                <div class="preview-icon green">🎯</div>
-                                <span>人岗智能匹配 - 准确率85%+</span>
-                            </div>
-                            <div class="preview-item">
-                                <div class="preview-icon purple">✨</div>
-                                <span>简历质量优化 - 提升35%</span>
-                            </div>
-                            <div class="preview-item">
-                                <div class="preview-icon cyan">📝</div>
-                                <span>候选人自助填报 - 体验升级</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Pain Points Section -->
-        <section class="pain-section">
-            <div class="section-header">
-                <span class="section-tag">⚠️ 行业痛点</span>
-                <h2 class="section-title">您是否正在面临这些挑战？</h2>
-                <p class="section-desc">金融外包行业招聘流程复杂，传统方式效率低、质量难保证</p>
-            </div>
-            <div class="pain-grid">
-                <div class="pain-card highlight">
-                    <div class="pain-icon">📋</div>
-                    <h3 class="pain-title">简历模板管理与批量生成效率低</h3>
-                    <p class="pain-desc">不同客户要求不同模板，手工调整格式耗时。日常推荐 30 分钟/份，投标准备更是噩梦：150 份简历需要 37.5 小时连续加班</p>
-                    <span class="pain-stat">📊 日常 30分钟/份 · 投标 37.5小时/批</span>
-                </div>
-                <div class="pain-card">
-                    <div class="pain-icon">⏰</div>
-                    <h3 class="pain-title">简历处理效率低</h3>
-                    <p class="pain-desc">人工录入一份简历需要 15-20 分钟，从简历收集到客户投递需要 3-5 天</p>
-                    <span class="pain-stat">📊 人工录入 15-20分钟/份</span>
-                </div>
-                <div class="pain-card">
-                    <div class="pain-icon">📉</div>
-                    <h3 class="pain-title">候选人匹配不精准</h3>
-                    <p class="pain-desc">依赖经验匹配，准确率约 60%，容易遗漏优质候选人或错误推荐</p>
-                    <span class="pain-stat">📊 匹配准确率仅 60%</span>
-                </div>
-                <div class="pain-card">
-                    <div class="pain-icon">📊</div>
-                    <h3 class="pain-title">简历质量参差不齐</h3>
-                    <p class="pain-desc">简历格式不统一，内容质量差，缺乏量化数据，影响推荐效果和客户满意度</p>
-                    <span class="pain-stat">📊 质量问题占比 60-70%</span>
-                </div>
-            </div>
-        </section>
+<!-- ======================== 导航栏 ======================== -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="navbar-logo">
+      <div class="logo-icon">D</div>
+      <div>
+        <div class="logo-text">DEEP-HR</div>
+        <span class="logo-sub">智能人力资源管理</span>
+      </div>
+    </a>
 
-        <!-- Solution Section -->
-        <section class="solution-section">
-            <div class="section-header">
-                <span class="section-tag">💡 解决方案</span>
-                <h2 class="section-title">五大核心能力，全面提升招聘效率</h2>
-                <p class="section-desc">DEEP-HR 通过 AI 技术重构招聘流程，实现智能化、自动化、标准化</p>
-            </div>
-            <div class="solution-grid">
-                <!-- Featured: 简历模板批量生成 -->
-                <div class="solution-card featured">
-                    <div class="featured-badge">⭐ 核心亮点</div>
-                    <div class="solution-icon">📋</div>
-                    <h3 class="solution-title">简历模板管理与批量生成</h3>
-                    <p class="solution-desc">AI 辅助解析客户模板结构，自动建立字段映射，一键批量生成 50-300 份简历。日常推荐从 30 分钟降到 3 分钟，投标准备从通宵加班变成 1 天轻松搞定</p>
-                    <div class="solution-features">
-                        <span class="solution-feature">多客户多模板</span>
-                        <span class="solution-feature">AI模板解析</span>
-                        <span class="solution-feature">批量生成</span>
-                        <span class="solution-feature">智能数据检查</span>
-                        <span class="solution-feature">节省90%时间</span>
-                    </div>
-                </div>
-
-                <div class="solution-card">
-                    <span class="solution-number">01</span>
-                    <div class="solution-icon">🤖</div>
-                    <h3 class="solution-title">AI 智能简历解析</h3>
-                    <p class="solution-desc">支持 Word、PDF、图片等多格式简历，AI 自动提取关键信息，3 分钟完成，效率提升 80%</p>
-                    <div class="solution-features">
-                        <span class="solution-feature">多格式支持</span>
-                        <span class="solution-feature">结构化存储</span>
-                        <span class="solution-feature">社保核实</span>
-                    </div>
-                </div>
-                <div class="solution-card">
-                    <span class="solution-number">02</span>
-                    <div class="solution-icon">🎯</div>
-                    <h3 class="solution-title">人岗智能匹配</h3>
-                    <p class="solution-desc">5 维度量化评分（技能、经验、项目、教育、证书），AI 深度理解岗位需求，准确率 85%+</p>
-                    <div class="solution-features">
-                        <span class="solution-feature">多维度评分</span>
-                        <span class="solution-feature">智能推荐</span>
-                        <span class="solution-feature">可解释报告</span>
-                    </div>
-                </div>
-                <div class="solution-card">
-                    <span class="solution-number">03</span>
-                    <div class="solution-icon">📝</div>
-                    <h3 class="solution-title">候选人自助填报</h3>
-                    <p class="solution-desc">现代化 Web 界面，分步引导填写，实时验证，替代微信沟通，信息完整度达 95%+</p>
-                    <div class="solution-features">
-                        <span class="solution-feature">在线表单</span>
-                        <span class="solution-feature">实时验证</span>
-                        <span class="solution-feature">移动适配</span>
-                    </div>
-                </div>
-                <div class="solution-card">
-                    <span class="solution-number">04</span>
-                    <div class="solution-icon">✨</div>
-                    <h3 class="solution-title">AI 简历优化</h3>
-                    <p class="solution-desc">多维度质量评分，智能优化建议，支持通用优化和岗位定向优化，简历质量提升 35%</p>
-                    <div class="solution-features">
-                        <span class="solution-feature">质量评估</span>
-                        <span class="solution-feature">智能建议</span>
-                        <span class="solution-feature">版本管理</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Scenario Section -->
-        <section class="scenario-section">
-            <div class="section-header">
-                <span class="section-tag">🎬 典型场景</span>
-                <h2 class="section-title">两大核心场景，效率提升立竿见影</h2>
-                <p class="section-desc">无论是日常推荐还是投标准备，DEEP-HR 都能帮您大幅提升效率</p>
-            </div>
-            <div class="scenario-grid">
-                <div class="scenario-card daily">
-                    <div class="scenario-header">
-                        <div class="scenario-icon">📤</div>
-                        <div>
-                            <h3 class="scenario-title">场景一：日常推荐</h3>
-                            <p class="scenario-subtitle">同一候选人推荐给多个客户</p>
-                        </div>
-                    </div>
-                    <div class="scenario-compare">
-                        <div class="compare-box before">
-                            <div class="compare-label">传统方式</div>
-                            <div class="compare-value">30</div>
-                            <div class="compare-unit">分钟/份</div>
-                        </div>
-                        <div class="compare-arrow">→</div>
-                        <div class="compare-box after">
-                            <div class="compare-label">DEEP-HR</div>
-                            <div class="compare-value">3</div>
-                            <div class="compare-unit">分钟/份</div>
-                        </div>
-                    </div>
-                    <div class="scenario-result">
-                        🚀 效率提升 <span class="highlight">90%</span>，告别重复劳动
-                    </div>
-                </div>
-
-                <div class="scenario-card bidding">
-                    <div class="scenario-header">
-                        <div class="scenario-icon">📑</div>
-                        <div>
-                            <h3 class="scenario-title">场景二：投标准备</h3>
-                            <p class="scenario-subtitle">大规模简历准备（150份）</p>
-                        </div>
-                    </div>
-                    <div class="scenario-compare">
-                        <div class="compare-box before">
-                            <div class="compare-label">传统方式</div>
-                            <div class="compare-value">37.5</div>
-                            <div class="compare-unit">小时（通宵加班）</div>
-                        </div>
-                        <div class="compare-arrow">→</div>
-                        <div class="compare-box after">
-                            <div class="compare-label">DEEP-HR</div>
-                            <div class="compare-value">7.5</div>
-                            <div class="compare-unit">小时（1天完成）</div>
-                        </div>
-                    </div>
-                    <div class="scenario-result">
-                        🎉 效率提升 <span class="highlight">80%</span>，告别通宵加班
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Value Section -->
-        <section class="value-section">
-            <div class="section-header">
-                <span class="section-tag">📊 效果对比</span>
-                <h2 class="section-title">使用前后效果对比</h2>
-                <p class="section-desc">DEEP-HR 帮助您实现招聘效率和质量的全面提升</p>
-            </div>
-            <div class="value-comparison">
-                <div class="value-column before">
-                    <div class="value-column-header">
-                        <h3 class="value-column-title">使用前</h3>
-                        <p class="value-column-subtitle">传统人工处理方式</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon-wrapper">✗</div>
-                        <div class="value-text">
-                            <div class="value-label">简历录入</div>
-                            <div class="value-detail">人工录入 15-20 分钟/份</div>
-                        </div>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon-wrapper">✗</div>
-                        <div class="value-text">
-                            <div class="value-label">简历生成（日常）</div>
-                            <div class="value-detail">手工调整格式 30 分钟/份</div>
-                        </div>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon-wrapper">✗</div>
-                        <div class="value-text">
-                            <div class="value-label">简历生成（投标）</div>
-                            <div class="value-detail">150 份需 37.5 小时</div>
-                        </div>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon-wrapper">✗</div>
-                        <div class="value-text">
-                            <div class="value-label">人岗匹配</div>
-                            <div class="value-detail">依赖经验，准确率 60%</div>
-                        </div>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon-wrapper">✗</div>
-                        <div class="value-text">
-                            <div class="value-label">候选人体验</div>
-                            <div class="value-detail">被动等待，满意度 65%</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="value-arrow">→</div>
-                
-                <div class="value-column after">
-                    <div class="value-column-header">
-                        <h3 class="value-column-title">使用后</h3>
-                        <p class="value-column-subtitle">DEEP-HR 智能处理</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon-wrapper">✓</div>
-                        <div class="value-text">
-                            <div class="value-label">简历录入</div>
-                            <div class="value-detail">AI 解析 3 分钟/份 ↑80%</div>
-                        </div>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon-wrapper">✓</div>
-                        <div class="value-text">
-                            <div class="value-label">简历生成（日常）</div>
-                            <div class="value-detail">一键生成 3 分钟/份 ↑90%</div>
-                        </div>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon-wrapper">✓</div>
-                        <div class="value-text">
-                            <div class="value-label">简历生成（投标）</div>
-                            <div class="value-detail">150 份仅需 7.5 小时 ↑80%</div>
-                        </div>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon-wrapper">✓</div>
-                        <div class="value-text">
-                            <div class="value-label">人岗匹配</div>
-                            <div class="value-detail">AI 智能匹配 85%+ ↑25%</div>
-                        </div>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon-wrapper">✓</div>
-                        <div class="value-text">
-                            <div class="value-label">候选人体验</div>
-                            <div class="value-detail">自助填写 满意度 85%+ ↑30%</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="cta-box">
-                <h2 class="cta-title">开启智能招聘新时代</h2>
-                <p class="cta-desc">让 AI 为您的招聘团队赋能，告别通宵加班，提升效率、优化质量</p>
-                <div class="cta-buttons">
-                    <a href="#" class="cta-btn primary">
-                        <span>🚀</span>
-                        立即体验演示
-                    </a>
-                    <a href="#" class="cta-btn secondary">
-                        <span>📞</span>
-                        预约咨询
-                    </a>
-                </div>
-                <div class="cta-contact">
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <span>deep-hr@outlook.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <span>400-xxx-xxxx</span>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">🌐</div>
-                        <span>deep-hr.ai4cloud.chat</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-brand">
-                <div class="footer-logo">D</div>
-                <span class="footer-name">DEEP-HR</span>
-            </div>
-            <div class="footer-copy">
-                © 2025 DEEP-HR 智能招聘助手 · 金融解决方案部
-            </div>
-        </footer>
+    <div class="navbar-nav" id="navMenu">
+      <a href="#features">产品功能</a>
+      <a href="#workflow">工作流程</a>
+      <a href="#cases">使用场景</a>
+      <a href="#pricing">定价方案</a>
+      <a href="#contact">联系我们</a>
     </div>
+
+    <div class="navbar-actions">
+      <button class="btn-ghost" onclick="scrollToSection('#pricing')">查看定价</button>
+      <button class="btn-primary" onclick="scrollToSection('#contact')">免费试用 30 天</button>
+    </div>
+
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ======================== Hero ======================== -->
+<section class="hero" id="home">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-grid"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-inner">
+        <!-- 左栏：文字 + CTA -->
+        <div class="hero-left">
+          <div class="hero-eyebrow">
+            <span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:pulse 2s infinite;display:inline-block;"></span>
+            新一代 AI 驱动招聘管理平台
+          </div>
+
+          <h1 class="hero-title">
+            全链路 AI 驱动的<br><span class="gradient-text">招聘管理系统</span>
+          </h1>
+
+          <p class="hero-desc">
+            以统一人才库为底座，七步全链路 AI 自动化：采集、核实、画像、匹配、优化、生成、面试辅导。人才从入库到上岗，全程数字化闭环。
+          </p>
+
+          <div class="hero-cta">
+            <button class="btn-hero-primary" onclick="scrollToSection('#contact')">免费体验 30 天</button>
+            <button class="btn-hero-secondary" onclick="scrollToSection('#workflow')">
+              了解工作流程 →
+            </button>
+          </div>
+          <p class="hero-cta-note">无需绑定信用卡 &nbsp;·&nbsp; 随时取消 &nbsp;·&nbsp; 数据随时可导出</p>
+        </div>
+
+        <!-- 右栏：对比表格 -->
+        <div class="hero-right">
+          <p class="hero-right-label">过去 vs DEEP-HR</p>
+          <div class="hero-comparison">
+            <div class="hc-header">
+              <span class="hc-header-label"></span>
+              <span class="hc-header-old">过去的做法</span>
+              <span class="hc-header-arrow"></span>
+              <span class="hc-header-new">✦ DEEP-HR</span>
+            </div>
+            <div class="hc-row">
+              <span class="hc-label">录入 1 份简历</span>
+              <span class="hc-old">手工整理，15-20 分钟</span>
+              <span class="hc-arrow">→</span>
+              <span class="hc-new">AI 解析，&lt; 1 分钟</span>
+            </div>
+            <div class="hc-row">
+              <span class="hc-label">候选人信息收集</span>
+              <span class="hc-old">微信反复催促，数天来回</span>
+              <span class="hc-arrow">→</span>
+              <span class="hc-new">自助门户，当天完成</span>
+            </div>
+            <div class="hc-row">
+              <span class="hc-label">批量生成 200 份</span>
+              <span class="hc-old">通宵加班约 100 小时</span>
+              <span class="hc-arrow">→</span>
+              <span class="hc-new">一键批量，约 10 小时</span>
+            </div>
+            <div class="hc-row">
+              <span class="hc-label">候选人初筛</span>
+              <span class="hc-old">HR + 面试官两轮，数天</span>
+              <span class="hc-arrow">→</span>
+              <span class="hc-new">AI 评分，当天出结果</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================== AI 模型支持横幅 ======================== -->
+<div class="tech-strip">
+  <div class="container">
+    <span class="tech-label">AI 模型支持</span>
+    <span class="tech-badge">智谱 GLM-5</span>
+    <span class="tech-badge">MiniMax 2.5</span>
+    <span class="tech-badge">通义千问 3.5</span>
+    <span class="tech-badge">豆包 2.0</span>
+    <span class="tech-badge">DeepSeek 3.2</span>
+    <span class="tech-badge">OpenAI GPT</span>
+    <span class="tech-badge">Claude</span>
+    <span class="tech-badge">私有化部署模型</span>
+  </div>
+</div>
+
+
+<!-- ======================== 产品预览区 ======================== -->
+<section class="section preview-section" id="preview">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge"><span class="dot"></span>产品界面</div>
+      <h2 class="section-title">一目了然的现代化操作体验</h2>
+      <p class="section-subtitle">简洁、高效、数据驱动——DEEP-HR 让复杂的招聘管理变得清晰可控</p>
+    </div>
+
+    <div class="preview-tabs">
+      <button class="ptab active" data-tab="talent" data-url="app.deep-hr.com/talent">🗄️ 人才库</button>
+      <button class="ptab" data-tab="match"   data-url="app.deep-hr.com/match">🎯 智能匹配</button>
+      <button class="ptab" data-tab="generate" data-url="app.deep-hr.com/generate">📄 简历生成</button>
+      <button class="ptab" data-tab="verify"  data-url="app.deep-hr.com/portal">📱 自助门户</button>
+      <button class="ptab" data-tab="coach"   data-url="app.deep-hr.com/coach">🎤 面试方案</button>
+    </div>
+
+    <div class="browser-frame">
+      <div class="browser-chrome">
+        <div class="browser-dots">
+          <span class="dot-red"></span>
+          <span class="dot-yellow"></span>
+          <span class="dot-green"></span>
+        </div>
+        <div class="browser-address" id="browserAddr">app.deep-hr.com/talent</div>
+      </div>
+
+      <div class="tab-panel active" data-panel="talent">
+        <div class="carousel">
+          <div class="carousel-track">
+            <img src="images/hr-talent-list-view.png" alt="人才库 - 列表视图" />
+            <img src="images/hr-talent-detail-basic.png" alt="人才库 - 候选人详情" />
+            <img src="images/hr-talent-detail-education.png" alt="人才库 - 教育经历" />
+            <img src="images/hr-talent-detail-work.png" alt="人才库 - 工作经历" />
+          </div>
+          <button class="carousel-btn carousel-prev" aria-label="上一张">&#8249;</button>
+          <button class="carousel-btn carousel-next" aria-label="下一张">&#8250;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="match">
+        <div class="carousel">
+          <div class="carousel-track">
+            <img src="images/hr-matching-index-stats.png" alt="智能匹配 - 匹配首页" />
+            <img src="images/hr-matching-result-list.png" alt="智能匹配 - 匹配结果列表" />
+          </div>
+          <button class="carousel-btn carousel-prev" aria-label="上一张">&#8249;</button>
+          <button class="carousel-btn carousel-next" aria-label="下一张">&#8250;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="generate">
+        <div class="carousel">
+          <div class="carousel-track">
+            <img src="images/hr-resume-generation-list.png" alt="简历生成 - 生成记录列表" />
+            <img src="images/hr-resume-template-fields.png" alt="简历生成 - 生成记录列表" />
+          </div>
+          <button class="carousel-btn carousel-prev" aria-label="上一张">&#8249;</button>
+          <button class="carousel-btn carousel-next" aria-label="下一张">&#8250;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="verify">
+        <div class="carousel">
+          <div class="carousel-track">
+            <img src="images/portal-step1.png" alt="自助门户 - 步骤1" />
+            <img src="images/portal-step3.png" alt="自助门户 - 步骤3" />
+            <img src="images/portal-step4.png" alt="自助门户 - 步骤4" />
+            <img src="images/portal-step5.png" alt="自助门户 - 步骤5" />
+          </div>
+          <button class="carousel-btn carousel-prev" aria-label="上一张">&#8249;</button>
+          <button class="carousel-btn carousel-next" aria-label="下一张">&#8250;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="coach">
+        <div class="carousel">
+          <div class="carousel-track">
+            <img src="images/hr-interview-detail-questions.png" alt="面试方案 - 问题" />
+            <img src="images/hr-interview-detail-risks.png" alt="面试方案 - 风险" />
+            <img src="images/hr-interview-detail-taboos.png" alt="面试方案 - 禁忌" />
+            <img src="images/hr-interview-list.png" alt="面试方案 - 面试准备列表" />
+          </div>
+          <button class="carousel-btn carousel-prev" aria-label="上一张">&#8249;</button>
+          <button class="carousel-btn carousel-next" aria-label="下一张">&#8250;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================== 行业痛点 ======================== -->
+<section class="section section-gray" id="pain">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge"><span class="dot"></span>行业痛点</div>
+      <h2 class="section-title">您还在为这些问题烦恼吗？</h2>
+      <p class="section-subtitle">传统招聘模式面临的挑战，正是 DEEP-HR 要彻底解决的问题</p>
+    </div>
+
+    <div class="pain-grid">
+      <div class="pain-card fade-up">
+        <div class="pain-icon">💬</div>
+        <div class="pain-title">候选人信息收集繁琐</div>
+        <div class="pain-desc">通过微信来回催促，填写不规范、信息缺失频繁，HR 不断跟进，严重降低候选人体验。</div>
+      </div>
+      <div class="pain-card fade-up">
+        <div class="pain-icon">⏱️</div>
+        <div class="pain-title">简历处理耗时耗力</div>
+        <div class="pain-desc">每份简历手工录入需 15-20 分钟，面对数百份简历时，HR 团队深陷文档海洋，严重影响招聘时效。</div>
+      </div>
+      <div class="pain-card fade-up">
+        <div class="pain-icon">🏷️</div>
+        <div class="pain-title">筛简历费时，候选人画像难以快速判断</div>
+        <div class="pain-desc">HR 需逐份阅读识别空窗期、跳槽频率、领域专长，筛选标准难以统一，依赖个人经验，效率低且容易遗漏。</div>
+      </div>
+      <div class="pain-card fade-up">
+        <div class="pain-icon">🔍</div>
+        <div class="pain-title">数据真实性难以验证</div>
+        <div class="pain-desc">学历造假、虚报工作经历难以察觉，入职后才发现问题，带来用工风险和合规隐患。</div>
+      </div>
+      <div class="pain-card fade-up">
+        <div class="pain-icon">🎯</div>
+        <div class="pain-title">候选人匹配依赖技术面试官二次筛选，效率低且结果不稳定</div>
+        <div class="pain-desc">HR 不具备技术背景，只能转发给技术面试官额外筛选；不同评审人判断受主观经验影响，同一简历结论迥异。</div>
+      </div>
+      <div class="pain-card fade-up">
+        <div class="pain-icon">✨</div>
+        <div class="pain-title">候选人简历质量参差不齐，影响面试机会</div>
+        <div class="pain-desc">很多候选人简历描述简陋、缺乏量化，本身具备面试资格却因表达不到位被筛掉，造成人才错失与资源浪费。</div>
+      </div>
+      <div class="pain-card fade-up">
+        <div class="pain-icon">📋</div>
+        <div class="pain-title">批量简历生成困难</div>
+        <div class="pain-desc">招标或大批量用工时需按客户格式化大量简历，一份手工 30 分钟，200 份意味着通宵加班。</div>
+      </div>
+      <div class="pain-card fade-up">
+        <div class="pain-icon">🎤</div>
+        <div class="pain-title">候选人面试临场表现差</div>
+        <div class="pain-desc">对面试风格、高频考察点、禁忌话题知之甚少，能力足够却应对失当，HR 精心筛选的候选人前功尽弃。</div>
+      </div>
+      <div class="pain-card fade-up">
+        <div class="pain-icon">🗄️</div>
+        <div class="pain-title">数据碎片化，人才资产无法沉淀复用</div>
+        <div class="pain-desc">候选人信息分散在 Excel、微信、邮件中，每次招聘从零开始，历史人才资源白白浪费。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================== 七步全链路价值链 ======================== -->
+<section class="section section-white" id="value-chain">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge"><span class="dot"></span>系统价值</div>
+      <h2 class="section-title">覆盖招聘七步全链路</h2>
+      <p class="section-subtitle">DEEP-HR 以统一人才库为数据底座，AI 贯穿每一个关键环节。每次招聘产生的候选人数据都沉淀下来，成为下一次招聘的资产</p>
+    </div>
+
+    <div class="value-chain">
+      <div class="vc-item fade-up">
+        <div class="vc-icon">📥</div>
+        <div class="vc-num">01</div>
+        <div class="vc-title">精准采集</div>
+        <div class="vc-desc">AI 解析多格式简历，三端自助门户（PC / H5 / 微信）采集，以统一数据结构入库</div>
+        <div class="vc-tags">
+          <span class="vc-tag">简历解析</span>
+          <span class="vc-tag">三端门户</span>
+        </div>
+      </div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-item fade-up">
+        <div class="vc-icon">🔐</div>
+        <div class="vc-num">02</div>
+        <div class="vc-title">全面核实</div>
+        <div class="vc-desc">三重交叉验证：社保记录核对工作经历、学信网核查学历、多维一致性检查</div>
+        <div class="vc-tags">
+          <span class="vc-tag">社保验证</span>
+          <span class="vc-tag">学信网</span>
+          <span class="vc-tag">一致性检查</span>
+        </div>
+      </div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-item fade-up">
+        <div class="vc-icon">🏷️</div>
+        <div class="vc-num">03</div>
+        <div class="vc-title">智能画像</div>
+        <div class="vc-desc">自动分析并打标签：空窗期、跳槽频率、领域专长，HR 扫一眼即完成人工 30 分钟的判断</div>
+        <div class="vc-tags">
+          <span class="vc-tag">规则标签</span>
+          <span class="vc-tag">人才画像</span>
+        </div>
+      </div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-item fade-up">
+        <div class="vc-icon">🎯</div>
+        <div class="vc-num">04</div>
+        <div class="vc-title">岗位匹配</div>
+        <div class="vc-desc">五维度 AI 评分深度解析 JD，结合人才画像标签，量化排名并输出匹配理由</div>
+        <div class="vc-tags">
+          <span class="vc-tag">岗位匹配</span>
+          <span class="vc-tag">AI 评分</span>
+        </div>
+      </div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-item fade-up">
+        <div class="vc-icon">✨</div>
+        <div class="vc-num">05</div>
+        <div class="vc-title">简历优化</div>
+        <div class="vc-desc">针对目标岗位诊断简历薄弱点，给出字段级改进建议，让实力不因表达平淡而错失机会</div>
+        <div class="vc-tags">
+          <span class="vc-tag">字段级建议</span>
+          <span class="vc-tag">投递优化</span>
+        </div>
+      </div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-item fade-up">
+        <div class="vc-icon">📄</div>
+        <div class="vc-num">06</div>
+        <div class="vc-title">批量生成</div>
+        <div class="vc-desc">AI 解析客户模板自动字段映射，一键批量生成 50-300 份标准化简历，约 3 分钟/份</div>
+        <div class="vc-tags">
+          <span class="vc-tag">模板生成</span>
+          <span class="vc-tag">批量导出</span>
+        </div>
+      </div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-item vc-item-highlight fade-up">
+        <div class="vc-icon">🎤</div>
+        <div class="vc-num">07</div>
+        <div class="vc-title">面试辅导</div>
+        <div class="vc-desc">基于候选人档案与 JD，生成个性化辅导方案：面试风格分析、高频考察点、STAR 示例回答</div>
+        <div class="vc-tags">
+          <span class="vc-tag">面试辅导</span>
+          <span class="vc-tag">个性化方案</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================== 四大核心能力模块 ======================== -->
+<section class="section section-gray" id="features">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge"><span class="dot"></span>核心功能</div>
+      <h2 class="section-title">四大核心能力，覆盖招聘七步全链路</h2>
+      <p class="section-subtitle">从候选人信息采集到面试成功，每一步都有 AI 深度赋能</p>
+    </div>
+
+    <!-- 能力 01：智能采集与核实（步骤 01+02）-->
+    <div class="pillar-section">
+      <div class="pillar-header">
+        <div>
+          <div class="pillar-num">01</div>
+          <div class="pillar-name">智能采集与核实</div>
+        </div>
+        <div class="pillar-sub">让进来的数据真实可信</div>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-up">
+          <div class="feature-icon">🤖</div>
+          <div class="feature-title">AI 智能简历解析</div>
+          <div class="feature-desc">
+            支持 PDF、Word、图片等多种格式，自动提取 8 大维度信息：个人基本信息、工作经历、项目经验、教育背景、技能、证书、语言、培训记录。解析结果按统一数据结构入库，杜绝格式混乱。
+          </div>
+          <span class="feature-tag">✓ 解析准确率 89%+</span>
+        </div>
+
+        <div class="feature-card fade-up">
+          <div class="feature-icon">📱</div>
+          <div class="feature-title">候选人自助信息门户</div>
+          <div class="feature-desc">
+            三端全覆盖：PC 端网页、移动端 H5、微信公众号（订阅号和服务号均支持）。候选人可随时自主填写、实时查看进度，6 步引导式表单，自动保存，告别微信反复催促。
+          </div>
+          <span class="feature-tag">✓ PC / H5 / 微信公众号</span>
+        </div>
+
+        <div class="feature-card feature-card-highlight fade-up">
+          <div class="feature-icon" style="background:var(--primary-100);border-color:rgba(99,102,241,0.3);">🔐</div>
+          <div class="feature-title">信息真实性三重核实</div>
+          <div class="feature-desc">
+            全程自动化，综合验证准确率 95%：
+            <span style="display:flex;flex-direction:column;gap:4px;margin-top:8px;font-size:12px;color:var(--text-secondary);">
+              <span>📋 社保记录 AI 验证：提取缴纳记录与工作经历交叉比对</span>
+              <span>🎓 学信网学历核查：联网批量核查，支持专科至博士</span>
+              <span>🔎 一致性检查：参工/教育时间、身份证/生日等硬性规则</span>
+            </span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="feature-tag">✓ 综合准确率 95%</span>
+            <span class="feature-tag">✓ 全程自动化</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 能力 02：智能画像与匹配（步骤 03+04）-->
+    <div class="pillar-section">
+      <div class="pillar-header">
+        <div>
+          <div class="pillar-num">02</div>
+          <div class="pillar-name">智能画像与匹配</div>
+        </div>
+        <div class="pillar-sub">让 HR 一眼找到对的人</div>
+      </div>
+      <div class="features-grid-2">
+        <div class="feature-card fade-up">
+          <div class="feature-icon">🏷️</div>
+          <div class="feature-title">智能人才画像</div>
+          <div class="feature-desc">
+            数据入库后，系统自动对每位候选人进行多维度分析并生成标签画像：
+            <span style="display:inline-flex;gap:6px;flex-wrap:wrap;margin-top:8px;">
+              <span style="font-size:12px;background:#fee2e2;color:#dc2626;padding:2px 8px;border-radius:999px;">🔴 空窗期</span>
+              <span style="font-size:12px;background:#fef9c3;color:#ca8a04;padding:2px 8px;border-radius:999px;">🟡 频繁跳槽</span>
+              <span style="font-size:12px;background:#dbeafe;color:#2563eb;padding:2px 8px;border-radius:999px;">🔵 领域专家度</span>
+              <span style="font-size:12px;background:var(--bg-gray2);color:var(--text-secondary);padding:2px 8px;border-radius:999px;">⚙️ 自定义规则</span>
+            </span>
+            <br>HR 扫一眼标签，即可完成人工需要逐份精读才能做出的判断，效率提升数十倍。所有候选人数据沉淀为统一人才库，持续可检索、可复用。
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="feature-tag">✓ 规则自动标签</span>
+            <span class="feature-tag">✓ 统一人才库底座</span>
+          </div>
+        </div>
+
+        <div class="feature-card fade-up">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-title">AI 岗位匹配与筛选</div>
+          <div class="feature-desc">
+            AI 深度语义解析 JD，结合候选人画像标签，从技能（25%）、工作经验（25%）、项目经验（20%）、教育背景（20%）、资质证书（10%）五个维度输出量化匹配得分与技术符合理由。HR 无需将简历转发给技术面试官二次评审，消除因评审人背景不同带来的主观差异，让筛选结果客观、可解释、可追溯。
+          </div>
+          <span class="feature-tag">✓ 匹配精度 85%+</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 能力 03：简历优化与生成（步骤 05+06）-->
+    <div class="pillar-section">
+      <div class="pillar-header">
+        <div>
+          <div class="pillar-num">03</div>
+          <div class="pillar-name">简历优化与生成</div>
+        </div>
+        <div class="pillar-sub">让每一份简历发挥最大价值</div>
+      </div>
+      <div class="features-grid-2">
+        <div class="feature-card fade-up">
+          <div class="feature-icon">✨</div>
+          <div class="feature-title">AI 简历优化</div>
+          <div class="feature-desc">
+            针对具体目标岗位，AI 诊断候选人简历的表达薄弱点，给出字段级改进建议：哪里描述过于笼统、哪里缺少量化成果、哪里与 JD 的关键词匹配度不足。帮候选人把「能做」说清楚、把「做过什么」说得让面试官信服，让真正有实力的人不因简历表达平淡而错失面试机会。
+          </div>
+          <span class="feature-tag">✓ 投递成功率提升 133%</span>
+        </div>
+
+        <div class="feature-card fade-up">
+          <div class="feature-icon">📄</div>
+          <div class="feature-title">标准化简历批量生成</div>
+          <div class="feature-desc">
+            AI 解析客户提供的 Word/Excel 简历模板，自动建立字段映射，一键批量生成 50-300 份符合客户格式的标准化简历。彻底解决 HR 外包公司招标前通宵赶稿的痛点，效率提升 90%，约 3 分钟/份。
+          </div>
+          <span class="feature-tag">✓ 3 分钟/份，效率提升 90%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 能力 04：智能面试辅导（步骤 07）-->
+    <div class="pillar-section" style="margin-bottom:0;">
+      <div class="pillar-header">
+        <div>
+          <div class="pillar-num">04</div>
+          <div class="pillar-name">智能面试辅导</div>
+        </div>
+        <div class="pillar-sub">让候选人带着剧本去面试</div>
+      </div>
+      <div class="feature-banner fade-up">
+        <div class="fb-icon-wrap">🎤</div>
+        <div>
+          <div class="fb-title">AI 面试准备与辅导</div>
+          <div class="fb-desc">
+            基于候选人完整档案与目标岗位 JD，AI 生成个性化面试辅导方案，覆盖三个方向：<br>
+            <strong style="color:var(--text-primary)">面试风格与考察偏好分析</strong>——让候选人提前了解「对方怎么考」；<br>
+            <strong style="color:var(--text-primary)">高频考察点与禁忌话题</strong>——明确哪些表达方式需要规避；<br>
+            <strong style="color:var(--text-primary)">针对性高胜率策略</strong>——结合候选人优劣势，提供 STAR 示例回答和应对策略。<br><br>
+            能力够、准备足，面试不再是运气。
+          </div>
+          <div class="fb-tags">
+            <span class="feature-tag">✓ 个性化，非通用模板</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ======================== 效果数据 ======================== -->
+<section class="section section-white" id="stats">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge"><span class="dot"></span>效果对比</div>
+      <h2 class="section-title">换一种方式做招聘</h2>
+      <p class="section-subtitle">七个关键环节，逐一对比传统做法与 DEEP-HR 的差异</p>
+    </div>
+
+    <div class="compare-table-wrap fade-up">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th class="col-label">环节</th>
+            <th class="col-old">传统做法</th>
+            <th class="col-new">DEEP-HR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-label">信息采集</td>
+            <td class="col-old">HR 手动录入，格式混乱，信息丢失</td>
+            <td class="col-new">候选人自助填写，AI 解析归一，字段完整</td>
+          </tr>
+          <tr>
+            <td class="col-label">背景核实</td>
+            <td class="col-old">人工打电话逐一确认，耗时数天</td>
+            <td class="col-new">社保 + 学信网 + 一致性三重自动核验，分钟级出报告</td>
+          </tr>
+          <tr>
+            <td class="col-label">人才画像</td>
+            <td class="col-old">凭感觉贴标签，评价标准因人而异</td>
+            <td class="col-new">AI 多维结构化画像，标准统一，可搜索可复用</td>
+          </tr>
+          <tr>
+            <td class="col-label">岗位匹配</td>
+            <td class="col-old">逐份阅读简历，大海捞针效率低</td>
+            <td class="col-new">五维度评分自动排序，优先候选人一目了然</td>
+          </tr>
+          <tr>
+            <td class="col-label">简历优化</td>
+            <td class="col-old">HR 反复修改措辞，费时费力</td>
+            <td class="col-new">AI 按岗位要求定向优化，保留原意，突出亮点</td>
+          </tr>
+          <tr>
+            <td class="col-label">简历生成</td>
+            <td class="col-old">每份简历单独排版，加班赶稿</td>
+            <td class="col-new">批量套模板一键生成，200 份 &lt; 1 小时</td>
+          </tr>
+          <tr>
+            <td class="col-label">面试辅导</td>
+            <td class="col-old">候选人自己猜考察点，通过率低</td>
+            <td class="col-new">AI 预测考察方向，生成个性化准备方案</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 安全认证带 -->
+    <div class="trust-strip">
+      <div class="trust-item">
+        <span class="ticon">🔒</span>
+        <span><strong>数据加密传输</strong> &nbsp;TLS 1.3</span>
+      </div>
+      <div class="trust-item">
+        <span class="ticon">🛡️</span>
+        <span><strong>等保三级</strong> &nbsp;认证</span>
+      </div>
+      <div class="trust-item">
+        <span class="ticon">📋</span>
+        <span><strong>ISO 27001</strong> &nbsp;信息安全管理</span>
+      </div>
+      <div class="trust-item">
+        <span class="ticon">🏢</span>
+        <span><strong>数据主权</strong> &nbsp;全量可导出</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================== 工作流程 ======================== -->
+<section class="section section-gray" id="workflow">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge"><span class="dot"></span>工作流程</div>
+      <h2 class="section-title">七步完成全链路招聘闭环</h2>
+      <p class="section-subtitle">从候选人信息采集到面试成功，AI 贯穿每一个关键节点，环环相扣</p>
+    </div>
+
+    <div class="workflow-steps">
+      <div class="workflow-step fade-up">
+        <div class="step-num" data-num="1">📥</div>
+        <div class="step-title">精准采集</div>
+        <div class="step-desc">三端门户采集，AI 解析 8 大维度，标准化入人才库</div>
+      </div>
+      <div class="workflow-step fade-up">
+        <div class="step-num" data-num="2">🔐</div>
+        <div class="step-title">三重核实</div>
+        <div class="step-desc">社保 + 学信网 + 一致性检查，自动生成核实报告</div>
+      </div>
+      <div class="workflow-step fade-up">
+        <div class="step-num" data-num="3">🧠</div>
+        <div class="step-title">智能画像</div>
+        <div class="step-desc">AI 构建结构化人才画像，标签自动生成可持续复用</div>
+      </div>
+      <div class="workflow-step fade-up">
+        <div class="step-num" data-num="4">🎯</div>
+        <div class="step-title">匹配筛选</div>
+        <div class="step-desc">五维度评分匹配 JD，优先候选人自动排序推荐</div>
+      </div>
+      <div class="workflow-step fade-up">
+        <div class="step-num" data-num="5">✨</div>
+        <div class="step-title">简历优化</div>
+        <div class="step-desc">AI 按岗位要求定向优化措辞，保留原意突出亮点</div>
+      </div>
+      <div class="workflow-step fade-up">
+        <div class="step-num" data-num="6">📄</div>
+        <div class="step-title">简历生成</div>
+        <div class="step-desc">批量套模板一键生成，200 份简历不到 1 小时交付</div>
+      </div>
+      <div class="workflow-step fade-up">
+        <div class="step-num" data-num="7">🎤</div>
+        <div class="step-title">面试辅导</div>
+        <div class="step-desc">AI 预测考察方向，生成个性化面试准备方案</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================== 典型使用场景 ======================== -->
+<section class="section section-white" id="cases">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge"><span class="dot"></span>典型使用场景</div>
+      <h2 class="section-title">哪些团队在用 DEEP-HR？</h2>
+      <p class="section-subtitle">三类核心用户，三种不同痛点，一套系统全覆盖</p>
+    </div>
+
+    <div class="cases-grid">
+      <!-- 场景 1 -->
+      <div class="case-card fade-up">
+        <span class="case-badge">HR 外包公司</span>
+        <div class="case-title">从通宵加班到高效交付</div>
+        <div class="case-desc">
+          HR 外包公司的核心交付物就是简历。每到招标季，一个团队要同时为十几个客户定制格式化简历，
+          靠人工熬夜赶稿既不可持续，也难以扩大客户规模。
+        </div>
+        <div class="case-quote">
+          DEEP-HR 的批量简历生成功能，让外包团队彻底从排版和格式化工作中解放出来。接同样数量的单，
+          投入的人力时间大幅减少；有了余力，团队可以承接更多客户，而不是靠加班硬撑。
+        </div>
+      </div>
+
+      <!-- 场景 2 -->
+      <div class="case-card fade-up">
+        <span class="case-badge">猎头公司</span>
+        <div class="case-title">精准匹配，提升成单率</div>
+        <div class="case-desc">
+          猎头的核心竞争力是"推对人"。面对每月数百份简历，靠人工逐份阅读效率低、
+          主观性强，推荐质量参差不齐，影响客户信任度和成单率。
+        </div>
+        <div class="case-quote">
+          DEEP-HR 的 AI 岗位匹配系统理解 JD 背后的真实需求，五维度评分自动筛出优先候选人。
+          猎头顾问把时间花在沟通和谈判上，而不是翻简历上，推荐质量和客户满意度都能显著提升。
+        </div>
+      </div>
+
+      <!-- 场景 3 -->
+      <div class="case-card fade-up">
+        <span class="case-badge">大型企业 HR 部门</span>
+        <div class="case-title">候选人体验升级，信息核实提速</div>
+        <div class="case-desc">
+          大型企业每年招聘数百人，候选人信息收集繁琐、背景核实周期长是普遍痛点。
+          HR 大量时间消耗在重复性信息处理上，无暇专注于候选人评估与决策。
+        </div>
+        <div class="case-quote">
+          DEEP-HR 候选人自助门户支持 PC、手机、微信公众号三端，候选人自主填写信息；
+          社保与学历核实自动完成，HR 只需审阅结构化报告，把精力放在真正需要判断力的环节。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================== 定价方案 ======================== -->
+<section class="section section-gray" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge"><span class="dot"></span>定价方案</div>
+      <h2 class="section-title">选择适合您团队的方案</h2>
+      <p class="section-subtitle">所有方案均提供 30 天免费试用，无需绑定信用卡，随时可升级</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- 基础版 -->
+      <div class="pricing-card fade-up">
+        <div class="pricing-name">基础版</div>
+        <div class="pricing-price">
+          <button class="btn-pricing btn-pricing-outline" style="margin:0 0 4px;">联系销售获取报价</button>
+        </div>
+        <div class="pricing-desc">适合 5-10 人的小型 HR 团队或初创公司</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> AI 简历解析（按量计费）</li>
+          <li><span class="check">✓</span> 基础岗位匹配功能</li>
+          <li><span class="check">✓</span> 统一人才库（500 人上限）</li>
+          <li><span class="check">✓</span> 候选人门户（PC + H5）</li>
+          <li><span class="check">✓</span> 基础规则标签（空窗期 / 频繁跳槽）</li>
+          <li><span class="check">✓</span> 标签与搜索系统（基础版）</li>
+          <li><span class="check">✓</span> 邮件支持</li>
+          <li><span class="check">✓</span> 5 个用户账号</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-outline">免费试用 30 天</button>
+      </div>
+
+      <!-- 专业版（推荐）-->
+      <div class="pricing-card featured fade-up">
+        <div class="popular-tag">🔥 最受欢迎</div>
+        <div class="pricing-name">专业版</div>
+        <div class="pricing-price">
+          <button class="btn-pricing btn-pricing-solid" style="margin:0 0 4px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);">联系销售获取报价</button>
+        </div>
+        <div class="pricing-desc">适合 11-20 人的成长型 HR 团队，全功能解锁</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> AI 简历解析（按量计费）</li>
+          <li><span class="check">✓</span> 智能岗位匹配（五维度评分）</li>
+          <li><span class="check">✓</span> 批量简历生成（不限次数）</li>
+          <li><span class="check">✓</span> 候选人门户（PC + H5 + 微信订阅号/服务号）</li>
+          <li><span class="check">✓</span> AI 简历优化功能</li>
+          <li><span class="check">✓</span> 社保记录 AI 验证</li>
+          <li><span class="check">✓</span> 学信网学历核查</li>
+          <li><span class="check">✓</span> 多维一致性检查</li>
+          <li><span class="check">✓</span> 统一人才库（不限人数）+ 完整标签系统</li>
+          <li><span class="check">✓</span> AI 面试准备与辅导</li>
+          <li><span class="check">✓</span> 多模型 AI 配置</li>
+          <li><span class="check">✓</span> 专属客户成功经理</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-solid">立即免费试用 30 天</button>
+      </div>
+
+      <!-- 企业版 -->
+      <div class="pricing-card fade-up">
+        <div class="pricing-name">企业版</div>
+        <div class="pricing-price">
+          <button class="btn-pricing btn-pricing-outline" style="margin:0 0 4px;">联系销售获取报价</button>
+        </div>
+        <div class="pricing-desc">适合 51-100+ 人的大型企业，支持私有化部署</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> 不限 AI 解析次数</li>
+          <li><span class="check">✓</span> 专业版全部功能</li>
+          <li><span class="check">✓</span> 私有化本地部署</li>
+          <li><span class="check">✓</span> 自定义数据字典与标签规则</li>
+          <li><span class="check">✓</span> 自定义业务流程</li>
+          <li><span class="check">✓</span> API 开放接口</li>
+          <li><span class="check">✓</span> 数据迁移支持</li>
+          <li><span class="check">✓</span> 7×24 小时技术支持</li>
+          <li><span class="check">✓</span> 专属实施顾问团队</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-outline">联系销售团队</button>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:28px;font-size:13px;color:var(--text-muted)">
+      具体报价根据团队规模、使用量及部署方式定制，联系销售了解详情。
+    </p>
+  </div>
+</section>
+
+
+<!-- ======================== FAQ ======================== -->
+<section class="section section-white" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge"><span class="dot"></span>常见问题</div>
+      <h2 class="section-title">您可能想了解的</h2>
+      <p class="section-subtitle">如有更多问题，欢迎联系我们的销售团队</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-question">
+          DEEP-HR 与传统 ATS / 招聘管理系统有什么核心区别？
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            传统 ATS 主要解决招聘流程管理（发布职位、收集简历、流程跟踪），而 DEEP-HR 专注于以 AI 为核心的招聘效能提升：从多格式简历 AI 解析、三重信息核实（社保 + 学信网 + 一致性检查）、五维度智能匹配，到批量简历生成、AI 面试辅导，每个环节都以自动化和智能化替代人工重复操作。更关键的是，DEEP-HR 以统一人才库为底座，让每次招聘的候选人数据都能沉淀复用，形成企业持续积累的核心人才资产。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          候选人自助门户支持微信公众号接入，需要我们自己有公众号吗？
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            是的，需要您提供自己的微信公众号（订阅号和服务号均支持）进行绑定配置。DEEP-HR 提供标准化的微信接入方案，技术对接由我们完成，您无需进行任何开发工作。候选人关注公众号后，可通过微信消息快捷提交信息并实时接收进度通知，大幅提升候选人体验。如您尚未开通公众号，我们也可提供申请指导。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          学信网学历核查是实时联网查询吗？查询结果如何处理？
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            学信网核查支持批量导入查询，系统自动调用学历认证接口并返回核查结果，集成在候选人核实报告中统一展示。具体实时性和接口限制以学信网服务协议为准。企业版用户支持自定义核查流程配置，私有化部署环境下需配置相应的外网访问权限，我们的实施团队会全程协助。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          社保记录验证需要候选人提供什么材料？操作流程是怎样的？
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            候选人需提供社保记录截图或 PDF（可从当地社保官网或「社保」App 自助下载），通过自助门户上传至 DEEP-HR。系统自动识别缴纳单位和时间段，与候选人申报的工作经历交叉比对，自动生成核实报告，全程无需人工介入，结果快速返回。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          AI 人才画像是怎么生成的？画像的准确性如何保证？
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            DEEP-HR 基于候选人的完整简历信息，结合核实通过的社保记录与学历数据，由大语言模型进行结构化分析，自动提取技能标签、行业经验、职能深度、稳定性评价等维度，形成多维画像。画像基于已核实的客观数据生成，而非纯主观推断；同时，HR 可在画像基础上手动补充或调整标签，保证评价的灵活性与准确性。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          AI 简历优化会改变候选人原始简历的内容吗？
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            不会改变事实性内容。AI 简历优化的核心是基于目标岗位 JD，对现有简历的表达方式、措辞和结构进行针对性优化，使亮点更突出、与岗位的匹配度更清晰——但所有的工作经历、职责描述、时间节点等事实信息均保持不变。每次优化后 HR 可预览对比原文，确认后再生成最终版本。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          AI 面试辅导的内容从哪里来？候选人需要额外填写信息吗？
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            AI 面试辅导方案基于候选人已有的简历信息和目标岗位 JD 自动生成，无需候选人额外填写。系统从三个方向生成辅导内容：① 根据 JD 要求预测高概率考察点；② 针对简历中的薄弱项或空窗期提供应对建议；③ 生成与岗位匹配的模拟问答练习题。整个过程由 HR 在后台一键触发，结果通过候选人门户推送给候选人。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          私有化部署后，学信网核查等在线服务还能正常使用吗？
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            私有化部署环境下，学信网核查等需要调用外部接口的功能，需要部署服务器具备相应的出站网络权限。我们的实施顾问在部署阶段会协助您完成网络配置与接口授权。对于有严格网络隔离要求的场景，我们也提供离线核查方案（需额外配置），具体方案在实施阶段根据您的安全要求定制。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          30 天试用结束后，人才库中的候选人数据会丢失吗？
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            不会。试用期结束后，您的人才库数据将完整保留。如选择继续使用，数据无缝延续；如不续费，我们提供 7 天数据导出窗口期，支持全量数据导出为标准格式（Excel / JSON），您的数据主权始终属于您自己，DEEP-HR 不会以任何方式扣押或删除您的数据。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================== CTA ======================== -->
+<section class="section cta-section" id="contact">
+  <div class="container">
+    <div class="cta-content">
+      <h2 class="cta-title">准备好告别 Excel 和通宵加班了吗？</h2>
+      <p class="cta-subtitle">
+        30 天免费试用所有专业版功能，无需绑定信用卡，随时取消，数据随时可导出。<br>
+        没有任何绑定，试完再决定。
+      </p>
+
+      <div class="cta-actions">
+        <button class="btn-cta btn-cta-primary">🚀 立即免费试用 30 天</button>
+        <button class="btn-cta btn-cta-secondary">📅 预约产品演示</button>
+      </div>
+
+      <p class="cta-note">无需绑定信用卡 &nbsp;·&nbsp; 免费试用期间可使用所有专业版功能 &nbsp;·&nbsp; 随时取消</p>
+
+      <div class="cta-contacts">
+        <div class="cta-contact-item">
+          <div class="cta-contact-label">商务合作</div>
+          <div class="cta-contact-val">business@eap.pub</div>
+        </div>
+        <div class="cta-contact-item">
+          <div class="cta-contact-label">技术支持</div>
+          <div class="cta-contact-val">support@eap.pub</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================== Footer ======================== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap">
+          <div class="footer-logo-icon">D</div>
+          <span class="footer-logo-name">DEEP-HR</span>
+        </div>
+        <p>AI 驱动的新一代智能人力资源管理系统，专为 HR 外包企业、猎头公司及大型企业提供全流程招聘自动化解决方案。</p>
+        <div class="footer-contact">
+          <a href="mailto:d@eap.pub">📧 d@eap.pub</a>
+          <a href="tel:4008888888">📞 400-888-888</a>
+          <a href="#">📍 北京市</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>产品功能</h4>
+        <ul>
+          <li><a href="#features">AI 简历解析</a></li>
+          <li><a href="#features">批量简历生成</a></li>
+          <li><a href="#features">智能岗位匹配</a></li>
+          <li><a href="#features">候选人自助门户</a></li>
+          <li><a href="#features">统一人才库</a></li>
+          <li><a href="#features">AI 简历优化</a></li>
+          <li><a href="#features">候选人信息核实</a></li>
+          <li><a href="#features">面试准备与辅导</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>解决方案</h4>
+        <ul>
+          <li><a href="#cases">HR 外包公司</a></li>
+          <li><a href="#cases">猎头招聘机构</a></li>
+          <li><a href="#cases">大型企业 HR</a></li>
+          <li><a href="#pricing">私有化部署</a></li>
+          <li><a href="#pricing">定制开发</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>公司信息</h4>
+        <ul>
+          <li><a href="#">关于我们</a></li>
+          <li><a href="#">帮助文档</a></li>
+          <li><a href="#">更新日志</a></li>
+          <li><a href="#">隐私政策</a></li>
+          <li><a href="#">服务条款</a></li>
+          <li><a href="#contact">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 DEEP-HR. All rights reserved. 深度人力资源科技有限公司</p>
+      <p class="icp">京ICP备2026XXXXXX号-1 &nbsp;·&nbsp; 增值电信业务经营许可证：京B2-XXXXXXXX</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ======================== JavaScript ======================== -->
+<script>
+  /* ---- 导航滚动阴影 ---- */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  /* ---- 移动端菜单 ---- */
+  function toggleMenu() {
+    document.getElementById('navMenu').classList.toggle('open');
+  }
+
+  /* ---- 导航活跃高亮（IntersectionObserver）---- */
+  const navLinks = document.querySelectorAll('.navbar-nav a[href^="#"]');
+  const sectionMap = {};
+  navLinks.forEach(link => {
+    const id = link.getAttribute('href').slice(1);
+    sectionMap[id] = link;
+  });
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        if (sectionMap[id]) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          sectionMap[id].classList.add('active');
+        }
+      }
+    });
+  }, { threshold: 0.35 });
+
+  document.querySelectorAll('section[id], div[id]').forEach(el => {
+    if (sectionMap[el.id]) sectionObserver.observe(el);
+  });
+
+  /* ---- 平滑滚动 ---- */
+  function scrollToSection(selector) {
+    const el = document.querySelector(selector);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  /* ---- 轮播初始化 ---- */
+  function initCarousel(car) {
+    const track    = car.querySelector('.carousel-track');
+    const slides   = track.children;
+    const dotsWrap = car.querySelector('.carousel-dots');
+    const prevBtn  = car.querySelector('.carousel-prev');
+    const nextBtn  = car.querySelector('.carousel-next');
+    const total    = slides.length;
+    let idx = 0;
+
+    // 生成 dots
+    dotsWrap.innerHTML = '';
+    Array.from(slides).forEach((_, i) => {
+      const d = document.createElement('span');
+      d.className = 'cdot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    });
+
+    function goTo(n) {
+      idx = n;
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      dotsWrap.querySelectorAll('.cdot').forEach((d, i) => d.classList.toggle('active', i === idx));
+      prevBtn.disabled = idx === 0;
+      nextBtn.disabled = idx === total - 1;
+    }
+
+    prevBtn.addEventListener('click', () => { if (idx > 0) goTo(idx - 1); });
+    nextBtn.addEventListener('click', () => { if (idx < total - 1) goTo(idx + 1); });
+
+    // 单图时隐藏导航
+    if (total <= 1) {
+      dotsWrap.style.display = 'none';
+      prevBtn.style.display  = 'none';
+      nextBtn.style.display  = 'none';
+    }
+
+    goTo(0);
+  }
+  document.querySelectorAll('.carousel').forEach(initCarousel);
+
+  /* ---- 产品预览 Tab 切换 ---- */
+  document.querySelectorAll('.ptab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      const url    = tab.dataset.url;
+      document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      const panel = document.querySelector(`[data-panel="${target}"]`);
+      if (panel) panel.classList.add('active');
+      const addrEl = document.getElementById('browserAddr');
+      if (addrEl) addrEl.textContent = url;
+    });
+  });
+
+  /* ---- FAQ 手风琴 ---- */
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item   = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  /* ---- Fade-up 入场动画 ---- */
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+</script>
 </body>
 </html>
