@@ -399,6 +399,36 @@
       .hero-eyebrow { justify-content: center; }
     }
 
+    /* 向下滚动提示 */
+    .scroll-hint {
+      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      cursor: pointer; z-index: 10;
+      animation: scrollHintFadeIn 1.2s ease 1.5s both;
+    }
+    .scroll-hint:hover .scroll-hint-circle { border-color: var(--primary); background: var(--primary-50); }
+    .scroll-hint-text {
+      font-size: 11px; font-weight: 500; color: var(--text-muted);
+      letter-spacing: 0.8px; text-transform: uppercase;
+    }
+    .scroll-hint-circle {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+      animation: scrollBounce 1.8s ease-in-out infinite;
+    }
+    .scroll-hint-circle svg { display: block; }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(5px); }
+    }
+    @keyframes scrollHintFadeIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+    @media (max-width: 960px) { .scroll-hint { bottom: 20px; } }
+
     /* 数据栏 */
     .hero-stats {
       display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
@@ -1096,11 +1126,108 @@
     }
 
     /* ============================================================
-       滚动条
+       全页滚动 · Full-Page Snap Scroll
     ============================================================ */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg-gray); }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    html, body { overflow: hidden; height: 100%; }
+
+    #fp-wrap {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scrollbar-width: none;
+      z-index: 1;
+    }
+    #fp-wrap::-webkit-scrollbar { display: none; }
+
+    /* 每个 section/footer 作为一个全屏页面 */
+    #fp-wrap > section,
+    #fp-wrap > footer {
+      height: 100vh;
+      overflow-y: auto;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    #fp-wrap > section::-webkit-scrollbar { width: 3px; }
+    #fp-wrap > section::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* Hero 内容已铺满全屏，不需内部滚动 */
+    #fp-wrap > .hero { overflow: hidden; min-height: unset; }
+
+    /* AI 模型横幅固定在 Hero 底部 */
+    .hero-tech-strip {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: none;
+      z-index: 2;
+    }
+
+    /* scroll-hint 上移，避免被 tech-strip 遮挡（tech-strip ≈ 56px） */
+    .scroll-hint { bottom: 72px !important; }
+
+    /* Footer 顶部留白补偿 fixed navbar */
+    #fp-wrap > footer { padding-top: 64px; }
+
+    /* ============================================================
+       侧边页码导航点
+    ============================================================ */
+    .fp-dots {
+      position: fixed;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 600;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+    }
+    .fp-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 99px;
+      background: rgba(148, 163, 184, 0.5);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .fp-dot::after {
+      content: attr(title);
+      position: absolute;
+      right: calc(100% + 10px);
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-primary);
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      border-radius: 5px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+    .fp-dot:hover::after { opacity: 1; }
+    .fp-dot.active {
+      height: 20px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+    .fp-dot:hover:not(.active) { background: var(--text-muted); transform: scale(1.3); }
+    @media (max-width: 900px) { .fp-dots { display: none; } }
+
+    /* ============================================================
+       原滚动条（保留给内部 section 局部滚动）
+    ============================================================ */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
   </style>
 </head>
@@ -1136,6 +1263,24 @@
   </div>
 </nav>
 
+<!-- 侧边页码导航点（12 屏） -->
+<nav class="fp-dots" aria-label="页面导航">
+  <span class="fp-dot active"  title="首页"></span>
+  <span class="fp-dot"         title="产品预览"></span>
+  <span class="fp-dot"         title="行业痛点"></span>
+  <span class="fp-dot"         title="全链路价值"></span>
+  <span class="fp-dot"         title="核心功能"></span>
+  <span class="fp-dot"         title="效果对比"></span>
+  <span class="fp-dot"         title="工作流程"></span>
+  <span class="fp-dot"         title="使用场景"></span>
+  <span class="fp-dot"         title="定价方案"></span>
+  <span class="fp-dot"         title="常见问题"></span>
+  <span class="fp-dot"         title="立即体验"></span>
+  <span class="fp-dot"         title="关于我们"></span>
+</nav>
+
+<!-- 全页滚动容器 -->
+<div id="fp-wrap">
 
 <!-- ======================== Hero ======================== -->
 <section class="hero" id="home">
@@ -1208,23 +1353,30 @@
       </div>
     </div>
   </div>
-</section>
-
-
-<!-- ======================== AI 模型支持横幅 ======================== -->
-<div class="tech-strip">
-  <div class="container">
-    <span class="tech-label">AI 模型支持</span>
-    <span class="tech-badge">智谱 GLM-5</span>
-    <span class="tech-badge">MiniMax 2.5</span>
-    <span class="tech-badge">通义千问 3.5</span>
-    <span class="tech-badge">豆包 2.0</span>
-    <span class="tech-badge">DeepSeek 3.2</span>
-    <span class="tech-badge">OpenAI GPT</span>
-    <span class="tech-badge">Claude</span>
-    <span class="tech-badge">私有化部署模型</span>
+  <!-- AI 模型支持横幅：固定在 Hero 底部 -->
+  <div class="tech-strip hero-tech-strip">
+    <div class="container">
+      <span class="tech-label">AI 模型支持</span>
+      <span class="tech-badge">智谱 GLM-5</span>
+      <span class="tech-badge">MiniMax 2.5</span>
+      <span class="tech-badge">通义千问 3.5</span>
+      <span class="tech-badge">豆包 2.0</span>
+      <span class="tech-badge">DeepSeek 3.2</span>
+      <span class="tech-badge">OpenAI GPT</span>
+      <span class="tech-badge">Claude</span>
+      <span class="tech-badge">私有化部署模型</span>
+    </div>
   </div>
-</div>
+  <!-- 向下滚动提示 -->
+  <div class="scroll-hint" onclick="document.querySelector('#preview').scrollIntoView({behavior:'smooth'})">
+    <span class="scroll-hint-text">向下滚动</span>
+    <div class="scroll-hint-circle">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 4.5L7 9.5L12 4.5" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
 
 
 <!-- ======================== 产品预览区 ======================== -->
@@ -2124,12 +2276,58 @@
 </footer>
 
 
+</div><!-- /fp-wrap -->
+
+
 <!-- ======================== JavaScript ======================== -->
 <script>
-  /* ---- 导航滚动阴影 ---- */
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 10);
+  /* ---- 全页滚动核心 ---- */
+  const fpWrap  = document.getElementById('fp-wrap');
+  const navbar  = document.getElementById('navbar');
+  const fpPages = Array.from(fpWrap.querySelectorAll(':scope > section, :scope > footer'));
+  const fpDots  = Array.from(document.querySelectorAll('.fp-dot'));
+
+  // 导航滚动阴影（监听 fpWrap 而非 window）
+  fpWrap.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', fpWrap.scrollTop > 10);
+    updateDots();
+  });
+
+  // 更新侧边导航点
+  function updateDots() {
+    const st = fpWrap.scrollTop;
+    const vh = fpWrap.clientHeight;
+    let activeIdx = 0;
+    fpPages.forEach((page, i) => {
+      if (st >= page.offsetTop - vh * 0.45) activeIdx = i;
+    });
+    fpDots.forEach((dot, i) => dot.classList.toggle('active', i === activeIdx));
+    // 同步更新 navbar 高亮
+    const activeId = fpPages[activeIdx]?.id;
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + activeId));
+  }
+
+  // 导航点点击
+  fpDots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      fpPages[i]?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // 键盘上下翻页
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' &&
+        e.key !== 'PageDown'  && e.key !== 'PageUp') return;
+    // 若焦点在输入框内则跳过
+    if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+    e.preventDefault();
+    const st  = fpWrap.scrollTop;
+    const vh  = fpWrap.clientHeight;
+    let cur = 0;
+    fpPages.forEach((page, i) => { if (st >= page.offsetTop - 10) cur = i; });
+    const dir = (e.key === 'ArrowDown' || e.key === 'PageDown') ? 1 : -1;
+    const target = fpPages[Math.max(0, Math.min(fpPages.length - 1, cur + dir))];
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
   });
 
   /* ---- 移动端菜单 ---- */
@@ -2137,31 +2335,10 @@
     document.getElementById('navMenu').classList.toggle('open');
   }
 
-  /* ---- 导航活跃高亮（IntersectionObserver）---- */
+  /* ---- 导航活跃高亮 ---- */
   const navLinks = document.querySelectorAll('.navbar-nav a[href^="#"]');
-  const sectionMap = {};
-  navLinks.forEach(link => {
-    const id = link.getAttribute('href').slice(1);
-    sectionMap[id] = link;
-  });
 
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        if (sectionMap[id]) {
-          navLinks.forEach(l => l.classList.remove('active'));
-          sectionMap[id].classList.add('active');
-        }
-      }
-    });
-  }, { threshold: 0.35 });
-
-  document.querySelectorAll('section[id], div[id]').forEach(el => {
-    if (sectionMap[el.id]) sectionObserver.observe(el);
-  });
-
-  /* ---- 平滑滚动 ---- */
+  /* ---- 平滑滚动（在 fpWrap 内滚动） ---- */
   function scrollToSection(selector) {
     const el = document.querySelector(selector);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -2172,6 +2349,9 @@
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
+
+  // 初始化导航点
+  updateDots();
 
   /* ---- 轮播初始化 ---- */
   function initCarousel(car) {
@@ -2239,7 +2419,7 @@
     });
   });
 
-  /* ---- Fade-up 入场动画 ---- */
+  /* ---- Fade-up 入场动画（root 改为 fpWrap） ---- */
   const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -2247,7 +2427,7 @@
         fadeObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.10, root: fpWrap });
   document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
 
 </script>
