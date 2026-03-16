@@ -588,8 +588,9 @@
       box-shadow: var(--shadow-md);
       transform: translateY(-3px);
     }
-    .pain-icon  { font-size: 28px; margin-bottom: 12px; }
-    .pain-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary); }
+    .pain-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .pain-icon  { font-size: 22px; flex-shrink: 0; }
+    .pain-title { font-size: 15px; font-weight: 600; color: var(--text-primary); }
     .pain-desc  { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
 
     /* ============================================================
@@ -632,9 +633,10 @@
       border-color: var(--border-accent);
     }
     .vc-item-highlight::before { opacity: 1; }
-    .vc-icon     { font-size: 22px; margin-bottom: 4px; }
+    .vc-header   { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+    .vc-icon     { font-size: 18px; flex-shrink: 0; }
     .vc-num      { font-size: 10px; font-weight: 700; color: var(--primary); letter-spacing: 2px; margin-bottom: 3px; }
-    .vc-title    { font-size: 13px; font-weight: 800; margin-bottom: 2px; color: var(--text-primary); }
+    .vc-title    { font-size: 13px; font-weight: 800; color: var(--text-primary); }
     .vc-subtitle { display: none; }
     .vc-desc     { font-size: 11px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 10px; }
     .vc-tags     { display: none; }
@@ -1485,48 +1487,39 @@
 
     <div class="pain-grid">
       <div class="pain-card fade-up">
-        <div class="pain-icon">💬</div>
-        <div class="pain-title">候选人信息收集繁琐</div>
+        <div class="pain-header"><div class="pain-icon">💬</div><div class="pain-title">候选人信息收集繁琐</div></div>
         <div class="pain-desc">通过微信来回催促，填写不规范、信息缺失频繁，HR 不断跟进，严重降低候选人体验。</div>
       </div>
       <div class="pain-card fade-up">
-        <div class="pain-icon">⏱️</div>
-        <div class="pain-title">简历处理耗时耗力</div>
+        <div class="pain-header"><div class="pain-icon">⏱️</div><div class="pain-title">简历处理耗时耗力</div></div>
         <div class="pain-desc">每份简历手工录入需 15-20 分钟，面对数百份简历时，HR 团队深陷文档海洋，严重影响招聘时效。</div>
       </div>
       <div class="pain-card fade-up">
-        <div class="pain-icon">🏷️</div>
-        <div class="pain-title">筛简历费时，候选人画像难以快速判断</div>
+        <div class="pain-header"><div class="pain-icon">🏷️</div><div class="pain-title">筛简历费时，候选人画像难以快速判断</div></div>
         <div class="pain-desc">HR 需逐份阅读识别空窗期、跳槽频率、领域专长，筛选标准难以统一，依赖个人经验，效率低且容易遗漏。</div>
       </div>
       <div class="pain-card fade-up">
-        <div class="pain-icon">🔍</div>
-        <div class="pain-title">数据真实性难以验证</div>
+        <div class="pain-header"><div class="pain-icon">🔍</div><div class="pain-title">数据真实性难以验证</div></div>
         <div class="pain-desc">学历造假、虚报工作经历难以察觉，入职后才发现问题，带来用工风险和合规隐患。</div>
       </div>
       <div class="pain-card fade-up">
-        <div class="pain-icon">🎯</div>
-        <div class="pain-title">候选人匹配依赖技术面试官二次筛选，效率低且结果不稳定</div>
+        <div class="pain-header"><div class="pain-icon">🎯</div><div class="pain-title">候选人匹配依赖技术面试官二次筛选，效率低且结果不稳定</div></div>
         <div class="pain-desc">HR 不具备技术背景，只能转发给技术面试官额外筛选；不同评审人判断受主观经验影响，同一简历结论迥异。</div>
       </div>
       <div class="pain-card fade-up">
-        <div class="pain-icon">✨</div>
-        <div class="pain-title">候选人简历质量参差不齐，影响面试机会</div>
+        <div class="pain-header"><div class="pain-icon">✨</div><div class="pain-title">候选人简历质量参差不齐，影响面试机会</div></div>
         <div class="pain-desc">很多候选人简历描述简陋、缺乏量化，本身具备面试资格却因表达不到位被筛掉，造成人才错失与资源浪费。</div>
       </div>
       <div class="pain-card fade-up">
-        <div class="pain-icon">📋</div>
-        <div class="pain-title">批量简历生成困难</div>
+        <div class="pain-header"><div class="pain-icon">📋</div><div class="pain-title">批量简历生成困难</div></div>
         <div class="pain-desc">招标或大批量用工时需按客户格式化大量简历，一份手工 30 分钟，200 份意味着通宵加班。</div>
       </div>
       <div class="pain-card fade-up">
-        <div class="pain-icon">🎤</div>
-        <div class="pain-title">候选人面试临场表现差</div>
+        <div class="pain-header"><div class="pain-icon">🎤</div><div class="pain-title">候选人面试临场表现差</div></div>
         <div class="pain-desc">对面试风格、高频考察点、禁忌话题知之甚少，能力足够却应对失当，HR 精心筛选的候选人前功尽弃。</div>
       </div>
       <div class="pain-card fade-up">
-        <div class="pain-icon">🗄️</div>
-        <div class="pain-title">数据碎片化，人才资产无法沉淀复用</div>
+        <div class="pain-header"><div class="pain-icon">🗄️</div><div class="pain-title">数据碎片化，人才资产无法沉淀复用</div></div>
         <div class="pain-desc">候选人信息分散在 Excel、微信、邮件中，每次招聘从零开始，历史人才资源白白浪费。</div>
       </div>
     </div>
@@ -1545,9 +1538,8 @@
 
     <div class="value-chain">
       <div class="vc-item fade-up">
-        <div class="vc-icon">📥</div>
         <div class="vc-num">01</div>
-        <div class="vc-title">精准采集</div>
+        <div class="vc-header"><div class="vc-icon">📥</div><div class="vc-title">精准采集</div></div>
         <div class="vc-desc">AI 解析多格式简历，三端自助门户（PC / H5 / 微信）采集，以统一数据结构入库</div>
         <div class="vc-tags">
           <span class="vc-tag">简历解析</span>
@@ -1556,9 +1548,8 @@
       </div>
       <div class="vc-arrow">→</div>
       <div class="vc-item fade-up">
-        <div class="vc-icon">🔐</div>
         <div class="vc-num">02</div>
-        <div class="vc-title">全面核实</div>
+        <div class="vc-header"><div class="vc-icon">🔐</div><div class="vc-title">全面核实</div></div>
         <div class="vc-desc">三重交叉验证：社保记录核对工作经历、学信网核查学历、多维一致性检查</div>
         <div class="vc-tags">
           <span class="vc-tag">社保验证</span>
@@ -1568,9 +1559,8 @@
       </div>
       <div class="vc-arrow">→</div>
       <div class="vc-item fade-up">
-        <div class="vc-icon">🏷️</div>
         <div class="vc-num">03</div>
-        <div class="vc-title">智能画像</div>
+        <div class="vc-header"><div class="vc-icon">🏷️</div><div class="vc-title">智能画像</div></div>
         <div class="vc-desc">自动分析并打标签：空窗期、跳槽频率、领域专长，HR 扫一眼即完成人工 30 分钟的判断</div>
         <div class="vc-tags">
           <span class="vc-tag">规则标签</span>
@@ -1579,9 +1569,8 @@
       </div>
       <div class="vc-arrow">→</div>
       <div class="vc-item fade-up">
-        <div class="vc-icon">🎯</div>
         <div class="vc-num">04</div>
-        <div class="vc-title">岗位匹配</div>
+        <div class="vc-header"><div class="vc-icon">🎯</div><div class="vc-title">岗位匹配</div></div>
         <div class="vc-desc">五维度 AI 评分深度解析 JD，结合人才画像标签，量化排名并输出匹配理由</div>
         <div class="vc-tags">
           <span class="vc-tag">岗位匹配</span>
@@ -1590,9 +1579,8 @@
       </div>
       <div class="vc-arrow">→</div>
       <div class="vc-item fade-up">
-        <div class="vc-icon">✨</div>
         <div class="vc-num">05</div>
-        <div class="vc-title">简历优化</div>
+        <div class="vc-header"><div class="vc-icon">✨</div><div class="vc-title">简历优化</div></div>
         <div class="vc-desc">针对目标岗位诊断简历薄弱点，给出字段级改进建议，让实力不因表达平淡而错失机会</div>
         <div class="vc-tags">
           <span class="vc-tag">字段级建议</span>
@@ -1601,9 +1589,8 @@
       </div>
       <div class="vc-arrow">→</div>
       <div class="vc-item fade-up">
-        <div class="vc-icon">📄</div>
         <div class="vc-num">06</div>
-        <div class="vc-title">批量生成</div>
+        <div class="vc-header"><div class="vc-icon">📄</div><div class="vc-title">批量生成</div></div>
         <div class="vc-desc">AI 解析客户模板自动字段映射，一键批量生成 50-300 份标准化简历，约 3 分钟/份</div>
         <div class="vc-tags">
           <span class="vc-tag">模板生成</span>
@@ -1612,9 +1599,8 @@
       </div>
       <div class="vc-arrow">→</div>
       <div class="vc-item vc-item-highlight fade-up">
-        <div class="vc-icon">🎤</div>
         <div class="vc-num">07</div>
-        <div class="vc-title">面试辅导</div>
+        <div class="vc-header"><div class="vc-icon">🎤</div><div class="vc-title">面试辅导</div></div>
         <div class="vc-desc">基于候选人档案与 JD，生成个性化辅导方案：面试风格分析、高频考察点、STAR 示例回答</div>
         <div class="vc-tags">
           <span class="vc-tag">面试辅导</span>
