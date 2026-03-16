@@ -327,69 +327,71 @@
     }
 
     /* 流程对比组件 */
-    .hero-comparison {
-      background: var(--bg-gray); border-radius: var(--radius-md);
-      border: 1px solid var(--border); padding: 8px 0;
-      margin-bottom: 40px; text-align: left;
-    }
-    .hc-row {
-      display: flex; align-items: center; gap: 0;
-      padding: 11px 20px; border-bottom: 1px solid var(--border);
-    }
-    .hc-row:last-child { border-bottom: none; }
-    .hc-label {
-      font-size: 12px; color: var(--text-muted); font-weight: 500;
-      width: 110px; flex-shrink: 0;
-    }
-    .hc-old {
-      flex: 1; font-size: 12px; color: var(--text-muted);
-      text-decoration: line-through; text-decoration-color: rgba(148,163,184,0.6);
-      white-space: nowrap;
-    }
-    .hc-arrow { font-size: 13px; color: var(--primary-light); margin: 0 10px; flex-shrink: 0; }
-    .hc-new {
-      width: 175px; flex-shrink: 0;
-      font-size: 12px; font-weight: 600; color: var(--primary);
-    }
-    .hc-new::before { content: '✓ '; }
-    @media (max-width: 680px) {
-      .hc-row { flex-wrap: wrap; gap: 4px; }
-      .hc-label { width: 100%; font-size: 11px; margin-bottom: 2px; }
-      .hc-old { flex: none; width: 100%; font-size: 12px; white-space: normal; }
-      .hc-arrow { margin: 2px 0; }
-      .hc-new { width: 100%; font-size: 12px; }
-    }
-
     /* Hero CTA 辅助小字 */
     .hero-cta-note {
       font-size: 12px; color: var(--text-muted);
       margin-top: 0; margin-bottom: 0;
     }
 
-    /* 右侧对比卡片容器 */
-    .hero-right {
-      position: relative;
+    /* 右侧指标卡片 */
+    .hero-right { position: relative; }
+    .hero-metrics {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
     }
-    .hero-right .hero-comparison {
-      margin-bottom: 0;
-      box-shadow: 0 8px 32px rgba(99,102,241,0.08), 0 2px 8px rgba(0,0,0,0.05);
+    .hero-metric {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 22px 20px 18px;
+      box-shadow: 0 2px 12px rgba(99,102,241,0.06), 0 1px 3px rgba(0,0,0,0.04);
+      transition: all 0.35s cubic-bezier(.4,0,.2,1);
+      position: relative; overflow: hidden;
     }
-    .hero-right-label {
-      font-size: 11px; font-weight: 700; letter-spacing: 1px;
-      color: var(--text-muted); text-transform: uppercase;
-      margin-bottom: 12px; padding-left: 4px;
+    .hero-metric::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2.5px;
+      background: var(--gradient-brand); opacity: 0;
+      transition: opacity 0.3s;
     }
-
-    /* 对比表格列标题行 */
-    .hc-header {
-      display: flex; align-items: center; gap: 0;
-      padding: 8px 20px 10px;
-      border-bottom: 1px solid var(--border);
+    .hero-metric:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(99,102,241,0.13), 0 2px 8px rgba(0,0,0,0.06);
+      border-color: var(--border-accent);
     }
-    .hc-header-label { width: 110px; flex-shrink: 0; }
-    .hc-header-old { flex: 1; font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.5px; }
-    .hc-header-arrow { width: 33px; flex-shrink: 0; }
-    .hc-header-new { width: 175px; flex-shrink: 0; font-size: 11px; font-weight: 700; color: var(--primary); letter-spacing: 0.5px; }
+    .hero-metric:hover::before { opacity: 1; }
+    .hero-metric-num {
+      font-size: 36px; font-weight: 800; line-height: 1;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-metric-unit {
+      font-size: 20px; font-weight: 700;
+    }
+    .hero-metric-bar {
+      height: 4px; background: var(--bg-gray2); border-radius: 2px;
+      margin: 10px 0 12px; overflow: hidden;
+    }
+    .hero-metric-fill {
+      height: 100%; border-radius: 2px;
+      background: var(--gradient-brand);
+      width: 0; animation: metricFill 1.2s cubic-bezier(.4,0,.2,1) forwards;
+      animation-delay: 0.3s;
+    }
+    @keyframes metricFill { to { width: var(--fill); } }
+    .hero-metric:nth-child(2) .hero-metric-fill { animation-delay: 0.45s; }
+    .hero-metric:nth-child(3) .hero-metric-fill { animation-delay: 0.6s; }
+    .hero-metric:nth-child(4) .hero-metric-fill { animation-delay: 0.75s; }
+    .hero-metric-title {
+      font-size: 13px; font-weight: 700; color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+    .hero-metric-desc {
+      font-size: 11.5px; color: var(--text-muted); line-height: 1.4;
+    }
+    @media (max-width: 480px) {
+      .hero-metrics { grid-template-columns: 1fr; gap: 12px; }
+    }
 
     @media (max-width: 960px) {
       .hero-content { text-align: center; }
@@ -1316,37 +1318,30 @@
 
         <!-- 右栏：对比表格 -->
         <div class="hero-right">
-          <p class="hero-right-label">过去 vs DEEP-HR</p>
-          <div class="hero-comparison">
-            <div class="hc-header">
-              <span class="hc-header-label"></span>
-              <span class="hc-header-old">过去的做法</span>
-              <span class="hc-header-arrow"></span>
-              <span class="hc-header-new">✦ DEEP-HR</span>
+          <div class="hero-metrics">
+            <div class="hero-metric">
+              <div class="hero-metric-num">89<span class="hero-metric-unit">%</span></div>
+              <div class="hero-metric-bar"><div class="hero-metric-fill" style="--fill:89%"></div></div>
+              <div class="hero-metric-title">简历处理效率提升</div>
+              <div class="hero-metric-desc">AI 解析替代手工录入</div>
             </div>
-            <div class="hc-row">
-              <span class="hc-label">录入 1 份简历</span>
-              <span class="hc-old">手工整理，15-20 分钟</span>
-              <span class="hc-arrow">→</span>
-              <span class="hc-new">AI 解析，&lt; 1 分钟</span>
+            <div class="hero-metric">
+              <div class="hero-metric-num">85<span class="hero-metric-unit">%</span></div>
+              <div class="hero-metric-bar"><div class="hero-metric-fill" style="--fill:85%"></div></div>
+              <div class="hero-metric-title">候选人匹配精度</div>
+              <div class="hero-metric-desc">五维 AI 评分模型</div>
             </div>
-            <div class="hc-row">
-              <span class="hc-label">候选人信息收集</span>
-              <span class="hc-old">微信反复催促，数天来回</span>
-              <span class="hc-arrow">→</span>
-              <span class="hc-new">自助门户，当天完成</span>
+            <div class="hero-metric">
+              <div class="hero-metric-num">76<span class="hero-metric-unit">%</span></div>
+              <div class="hero-metric-bar"><div class="hero-metric-fill" style="--fill:76%"></div></div>
+              <div class="hero-metric-title">简历优化通过率提升</div>
+              <div class="hero-metric-desc">针对岗位诊断 + 字段级改写</div>
             </div>
-            <div class="hc-row">
-              <span class="hc-label">批量生成 200 份</span>
-              <span class="hc-old">通宵加班约 100 小时</span>
-              <span class="hc-arrow">→</span>
-              <span class="hc-new">一键批量，约 10 小时</span>
-            </div>
-            <div class="hc-row">
-              <span class="hc-label">候选人初筛</span>
-              <span class="hc-old">HR + 面试官两轮，数天</span>
-              <span class="hc-arrow">→</span>
-              <span class="hc-new">AI 评分，当天出结果</span>
+            <div class="hero-metric">
+              <div class="hero-metric-num">83<span class="hero-metric-unit">%</span></div>
+              <div class="hero-metric-bar"><div class="hero-metric-fill" style="--fill:83%"></div></div>
+              <div class="hero-metric-title">面试考点命中率</div>
+              <div class="hero-metric-desc">AI 预测高频问题实际覆盖率</div>
             </div>
           </div>
         </div>
